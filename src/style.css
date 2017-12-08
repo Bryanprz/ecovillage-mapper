@@ -1,0 +1,15 @@
+#map {
+  width: 800px;
+  height: 600px;
+  margin: auto;
+}
+
+.input-group {
+  margin: auto;
+  width: 50%;
+  padding-bottom: 15px;
+}
+
+.form-control {
+  text-align: center;
+}

@@ -8,24 +8,24 @@ import '../style/location_form.css';
 class LocationForm extends Component {
   constructor(props) {
   	super(props);
-  	this.state = { address: '' };
-  	this.onInputChange = this.onInputChange.bind(this);
+  	this.state = { address: '', lookingFor: '' };
+  	this.onAddressInputChange = this.onAddressInputChange.bind(this);
+  	this.onLookingForInputChange = this.onLookingForInputChange.bind(this);
     this.onFormSubmit = this.onFormSubmit.bind(this);
-    this.onCheckboxSelect = this.onCheckboxSelect.bind(this);
   }
 
-  onInputChange(event) {
+  onAddressInputChange(event) {
   	this.setState({ address: event.target.value });
+  }
+
+  onLookingForInputChange(event) {
+  	this.setState({ lookingFor: event.target.value });
   }
 
   onFormSubmit(event) {
   	event.preventDefault();
     this.props.addLocation(this.state.address); // sending to actioncreator
-    this.setState({ address: '' });
-  }
-
-  onCheckboxSelect(event) {
-    console.log("checkbox selected:", event);
+    this.setState({ address: '', lookingFor: '' });
   }
 
   render() {
@@ -39,7 +39,15 @@ class LocationForm extends Component {
               value={this.state.address}
               placeholder="Direccion de nuevo lugar"
               className="form-control"
-              onChange={this.onInputChange}
+              onChange={this.onAddressInputChange}
+            />
+          </div>
+          <div className="form-group">
+            <input 
+              type="text" 
+              placeholder="Que estan buscando?" 
+              className="form-control" 
+              onChange={this.onLookingForInputChange}
             />
           </div>
           <Category value="Salud y Bienestar" id="salud" />

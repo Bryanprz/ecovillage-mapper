@@ -5,6 +5,10 @@ const capitalize = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+const onCheckboxSelect = (event) => {
+  console.log('checkbox selected:', event.target.value);
+}
+
 const Category = (props) => {
   return (
     <div className="form-group">
@@ -14,8 +18,8 @@ const Category = (props) => {
           type="checkbox" 
           value={props.value}
           className="form-check-input"
-        />
-        <label for={props.id} className="form-check-label">{capitalize(props.value)}</label>
+          onChange={onCheckboxSelect}/>
+        <label className="form-check-label">{capitalize(props.value)}</label>
       </div>
     </div>
   )

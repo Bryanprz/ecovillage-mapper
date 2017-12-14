@@ -22,8 +22,13 @@ class LocationForm extends Component {
   	this.setState({ lookingFor: event.target.value });
   }
 
+  validateAddress(address) {
+    return "Por favor ingrese una direccion válida"
+  }
+
   onFormSubmit(event) {
   	event.preventDefault();
+    this.validateAddress(this.state.address);
     this.props.addLocation(this.state.address); // sending to actioncreator
     this.setState({ address: '', lookingFor: '' });
   }
@@ -40,6 +45,7 @@ class LocationForm extends Component {
               placeholder="Direccion de nuevo lugar"
               className="form-control"
               onChange={this.onAddressInputChange}
+              required
             />
           </div>
           <div className="form-group">

@@ -31,15 +31,43 @@ class GoogleMap extends Component {
       map: this.map,
       position: this.props.searchCoordinates
     });
+
+    const infoWindow = new google.maps.InfoWindow({
+      content: 'yes kai'
+    });
+
+    marker.addListener('click', () => { infoWindow.open(this.map, marker) });
+  }
+
+  addInfoWindow() {
+    //const infoWindow = new google.maps.InfoWindow({
+      //content: 'yes kai'
+    //});
   }
   
   componentDidMount() {
     this.map = this.initMap();
   }
 
+  clearErrorMessage() {
+    const el = document.getElementsByClassName("App-intro")[0];
+    el.innerHTML = '';            
+  }
+
+  showErrorMessage(message) {
+    const el = document.getElementsByClassName("App-intro")[0];
+    el.classList.add("error-message");
+    el.innerHTML = message;
+  }
+
   componentDidUpdate() {
-    this.centerMap(this.props.searchCoordinates);
-    this.addMarker(this.props.searchCoordinates);
+    if (this.props.searchCoordinates === null) { 
+      this.showErrorMessage("Dirección no encontrada");
+    } else {
+      this.clearErrorMessage()
+      this.centerMap(this.props.searchCoordinates);
+      this.addMarker(this.props.searchCoordinates);
+    }
   }
 
   render() {

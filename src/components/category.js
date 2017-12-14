@@ -11,16 +11,14 @@ const onCheckboxSelect = (event) => {
 
 const Category = (props) => {
   return (
-    <div className="form-group">
-      <div className="form-check">
-        <input 
-          id={props.id}
-          type="checkbox" 
-          value={props.value}
-          className="form-check-input"
-          onChange={onCheckboxSelect}/>
-        <label className="form-check-label">{capitalize(props.value)}</label>
-      </div>
+    <div className="form-group form-check">
+      <input 
+        id={props.id}
+        type="checkbox" 
+        value={props.value}
+        className="form-check-input"
+        onChange={onCheckboxSelect}/>
+      <label className="form-check-label">{capitalize(props.value)}</label>
     </div>
   )
 }

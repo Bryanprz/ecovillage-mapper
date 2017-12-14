@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import '../style.css';
+import '../style/google_map.css';
 
 
 class GoogleMap extends Component {
@@ -38,7 +38,7 @@ class GoogleMap extends Component {
   }
 
   render() {
-    return <div id="map">Map component mounted</div>
+    return <div id="map" >Map component mounted</div>
   }
 }
 

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addLocation } from '../actions/index';
 import { bindActionCreators } from 'redux';
+import '../style/search_bar.css';
 
 class SearchBar extends Component {
   constructor(props) {
@@ -23,18 +24,20 @@ class SearchBar extends Component {
 
   render() {
   	return (
-  	  <form className="input-group" onSubmit={this.onFormSubmit}>
-  	    <input 
-  	      type="search" 
-          value={this.state.term}
-  	      placeholder="Agregue una nueva direccion al mapa"
-  	      className="form-control"
-  	      onChange={this.onInputChange}
-  	    />
-  	    <span className="input-group-btn">
-  	      <button className="btn btn-secondary" type="submit">Buscar</button>
-  	    </span>
-  	  </form>
+      <div className="col-md-4" >
+        <form className="input-group" onSubmit={this.onFormSubmit}>
+          <input 
+            type="search" 
+            value={this.state.term}
+            placeholder="Agregue una nueva direccion al mapa"
+            className="form-control"
+            onChange={this.onInputChange}
+          />
+          <span className="input-group-btn">
+            <button className="btn btn-secondary" type="submit">Buscar</button>
+          </span>
+        </form>
+      </div>
   	)
   }
 }

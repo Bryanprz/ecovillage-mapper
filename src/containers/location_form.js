@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addLocation } from '../actions/index';
 import { bindActionCreators } from 'redux';
+import Category from '../components/category';
 import '../style/location_form.css';
 
 class LocationForm extends Component {
@@ -30,7 +31,6 @@ class LocationForm extends Component {
   render() {
   	return (
       <div className="col-md-4" >
-        <h5>Agregue un nuevo lugar al mapa</h5>
         <form onSubmit={this.onFormSubmit}>
           <div className="form-group">
             <input 
@@ -42,90 +42,13 @@ class LocationForm extends Component {
               onChange={this.onInputChange}
             />
           </div>
-          <div className="form-group">
-            <div className="form-check">
-              <input 
-                id="value-1"
-                type="checkbox" 
-                onChange={this.onCheckboxSelect} 
-                value="value 1" 
-                className="form-check-input"
-              />
-                <label for="value-1" className="form-check-label">Value 1</label>
-            </div>
-          </div>
-          <div className="form-group">
-            <div className="form-check">
-              <input 
-                id="value-2"
-                type="checkbox" 
-                onChange={this.onCheckboxSelect} 
-                value="value 2" 
-                className="form-check-input"
-              />
-              <label for="value-2" className="form-check-label">Value 2</label>
-            </div>
-          </div>
-          <div className="form-group">
-            <div className="form-check">
-              <input 
-                id="value-3"
-                type="checkbox" 
-                onChange={this.onCheckboxSelect} 
-                value="value 3" 
-                className="form-check-input"
-              />
-              <label for="value-3" className="form-check-label">Value 3</label>
-            </div>
-          </div>
-          <div className="form-group">
-            <div className="form-check">
-              <input 
-                id="value-4"
-                type="checkbox" 
-                onChange={this.onCheckboxSelect} 
-                value="value 4" 
-                className="form-check-input"
-              />
-              <label for="value-4" className="form-check-label">Value 4</label>
-            </div>
-          </div>
-          <div className="form-group">
-            <div className="form-check">
-              <input 
-                id="value-5"
-                type="checkbox" 
-                onChange={this.onCheckboxSelect} 
-                value="value 5" 
-                className="form-check-input"
-              />
-              <label for="value-5" className="form-check-label">Value 5</label>
-            </div>
-          </div>
-          <div className="form-group">
-            <div className="form-check">
-              <input 
-                id="value-6"
-                type="checkbox" 
-                onChange={this.onCheckboxSelect} 
-                value="value 6" 
-                className="form-check-input"
-              />
-              <label for="value-6" className="form-check-label">Value 6</label>
-            </div>
-          </div>
-          <div className="form-group">
-            <div className="form-check">
-              <input 
-                id="value-7"
-                type="checkbox" 
-                onChange={this.onCheckboxSelect} 
-                value="value 7" 
-                className="form-check-input"
-              />
-              <label for="value-7" className="form-check-label">Value 7</label>
-            </div>
-          </div>
+          <Category value="value 1" id="value-1" />
+          <Category value="value 2" id="value-2" />
+          <Category value="value 3" id="value-3" />
+          <Category value="value 4" id="value-4" />
+          <Category value="value 5" id="value-5" />
+          <Category value="value 6" id="value-6" />
+          <Category value="value 7" id="value-7" />
           <button className="btn btn-secondary" type="submit">Agregue Nuevo Lugar</button>
         </form>
       </div>

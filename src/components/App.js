@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import logo from '../logo.png';
 import '../App.css';
-import GoogleMap from './google_map';
-import SearchBar from './search_bar';
+import GoogleMap from '../containers/google_map';
+import SearchBar from '../containers/search_bar';
 
 class App extends Component {
   render() {
@@ -16,7 +16,7 @@ class App extends Component {
           Mapa para busquar encuentros, eco-aldeas, ceremonias y mas...
         </p>
         <SearchBar />
-        <GoogleMap lat="48.137" lon="11.5752" />
+        <GoogleMap lat="48.137" lng="11.5752" />
       </div>
     );
   }

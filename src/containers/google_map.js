@@ -21,10 +21,6 @@ class GoogleMap extends Component {
     return map;
   }
 
-  centerMap(coordinates) {
-    this.map.setCenter(coordinates);
-  }
-
   addMarker(coordinates = {}) {
     const google = window.google;
     const marker = new google.maps.Marker({
@@ -65,7 +61,7 @@ class GoogleMap extends Component {
       this.showErrorMessage("Dirección no encontrada");
     } else {
       this.clearErrorMessage()
-      this.centerMap(this.props.searchCoordinates);
+      this.map.setCenter(this.props.searchCoordinates);
       this.addMarker(this.props.searchCoordinates);
     }
   }

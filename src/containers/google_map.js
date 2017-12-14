@@ -21,6 +21,10 @@ class GoogleMap extends Component {
     return map;
   }
 
+  centerMap(coordinates) {
+    this.map.setCenter(coordinates);
+  }
+
   addMarker(coordinates = {}) {
     const google = window.google;
     const marker = new google.maps.Marker({
@@ -34,6 +38,7 @@ class GoogleMap extends Component {
   }
 
   componentDidUpdate() {
+    this.centerMap(this.props.searchCoordinates);
     this.addMarker(this.props.searchCoordinates);
   }
 

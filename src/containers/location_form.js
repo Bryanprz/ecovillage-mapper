@@ -42,13 +42,13 @@ class LocationForm extends Component {
               onChange={this.onInputChange}
             />
           </div>
-          <Category value="value 1" id="value-1" />
-          <Category value="value 2" id="value-2" />
-          <Category value="value 3" id="value-3" />
-          <Category value="value 4" id="value-4" />
-          <Category value="value 5" id="value-5" />
-          <Category value="value 6" id="value-6" />
-          <Category value="value 7" id="value-7" />
+          <Category value="Salud y Bienestar" id="salud" />
+          <Category value="Arte y Cultura" id="arte" />
+          <Category value="Economías Solidarias" id="economias" />
+          <Category value="PlataFormas de Incidencia Política / Institucional" id="politica" />
+          <Category value="Plataformas de Pedagogía / Educación / Comunicación" id="educacion" />
+          <Category value="EcoLogia Ambiental, EcoTurismo, Diseños y Tecnología" id="ecologia" />
+          <Category value="Espiritualidad & Realización del Ser" id="espiritualidad" />
           <button className="btn btn-secondary" type="submit">Agregue Nuevo Lugar</button>
         </form>
       </div>

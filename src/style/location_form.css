@@ -2,8 +2,12 @@
   margin-left: 15px;
 }
 
-.form-control {
-  text-align: center;
+.form-check {
+  text-align: left;
+}
+
+.form-check-label {
+  margin-left: 5px;
 }
 
 .btn {

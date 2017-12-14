@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addLocation } from '../actions/index';
 import { bindActionCreators } from 'redux';
-import '../style/search_bar.css';
+import '../style/location_form.css';
 
-class SearchBar extends Component {
+class LocationForm extends Component {
   constructor(props) {
   	super(props);
   	this.state = { address: '' };
@@ -137,4 +137,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ addLocation }, dispatch);
 }
 
-export default connect(null, mapDispatchToProps)(SearchBar);
+export default connect(null, mapDispatchToProps)(LocationForm);

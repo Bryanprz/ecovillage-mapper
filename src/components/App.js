@@ -3,6 +3,7 @@ import logo from '../logo.png';
 import '../style/App.css';
 import GoogleMap from '../containers/google_map';
 import LocationForm from '../containers/location_form';
+import DestinationNew from './destination_new';
 
 class App extends Component {
   render() {
@@ -16,7 +17,7 @@ class App extends Component {
           Mapa para busquar encuentros, eco-aldeas, ceremonias y mas...
         </p>
         <div className="row">
-          <LocationForm />
+          <DestinationNew />
           <GoogleMap lat="48.137" lng="11.5752" />
         </div>
       </div>

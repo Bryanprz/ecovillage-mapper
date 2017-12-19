@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
 import SearchReducer from './reducer_search';
+import { reducer as formReducer } from 'redux-form';
 
 // State Tree
 const rootReducer = combineReducers({
-	searchCoordinates: SearchReducer
+	searchCoordinates: SearchReducer,
+  form: formReducer
 })
 
 export default rootReducer;

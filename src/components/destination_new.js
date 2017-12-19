@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
+import { addLocation } from '../actions';
 import '../style/destination_new.css';
 
 class DestinationNew extends Component {
@@ -38,6 +40,7 @@ class DestinationNew extends Component {
   // callback that runs if handleSubmit (redux form prop) validates
   onSubmit(values) {
     console.log(values);
+    this.props.addLocation(values); // sending to actioncreator
   }
 
   render() {
@@ -131,4 +134,6 @@ function validate(values) {
 export default reduxForm({
   validate,
   form: 'DestinationNewForm'
-})(DestinationNew);
+})(
+  connect(null, { addLocation })(DestinationNew)
+);

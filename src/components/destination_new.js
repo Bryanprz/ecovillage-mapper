@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
+import '../style/destination_new.css';
 
 class DestinationNew extends Component {
   renderField(field) {

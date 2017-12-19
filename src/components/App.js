@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import logo from '../logo.png';
 import '../style/App.css';
 import GoogleMap from '../containers/google_map';
-import LocationForm from '../containers/location_form';
 import DestinationNew from './destination_new';
 
 class App extends Component {

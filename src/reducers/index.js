@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import NewDestinationReducer from './reducer_new_destination';
+import AddLocationReducer from './reducer_add_location';
 import { reducer as formReducer } from 'redux-form';
 
 // State Tree
 const rootReducer = combineReducers({
-	searchCoordinates: NewDestinationReducer,
+	searchCoordinates: AddLocationReducer,
   form: formReducer
 })
 

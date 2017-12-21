@@ -39,8 +39,8 @@ class DestinationNew extends Component {
 
   // callback that runs if handleSubmit (redux form prop) validates
   onSubmit(values) {
-    console.log(values);
-    this.props.addLocation(values); // sending to actioncreator
+    // sending to actioncreator
+    this.props.addLocation(values); 
   }
 
   render() {
@@ -67,7 +67,7 @@ class DestinationNew extends Component {
             component={this.renderField}
           />
           <Field
-            name="request"
+            name="seeking"
             placeholder="Que estan buscando?"
             type="text"
             component={this.renderField}

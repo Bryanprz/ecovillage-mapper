@@ -4,7 +4,7 @@ import { reducer as formReducer } from 'redux-form';
 
 // State Tree
 const rootReducer = combineReducers({
-	searchCoordinates: AddLocationReducer,
+	location: AddLocationReducer,
   form: formReducer
 })
 

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import '../style/google_map.css';
 
-
 class GoogleMap extends Component {
   initMap() {
     var lat = parseFloat(this.props.lat);
@@ -25,7 +24,7 @@ class GoogleMap extends Component {
     const google = window.google;
     const marker = new google.maps.Marker({
       map: this.map,
-      position: this.props.searchCoordinates
+      position: coordinates
     });
 
     const infoWindow = new google.maps.InfoWindow({
@@ -57,13 +56,16 @@ class GoogleMap extends Component {
   }
 
   componentDidUpdate() {
-    if (this.props.searchCoordinates === null) { 
-      this.showErrorMessage("Dirección no encontrada");
-    } else {
-      this.clearErrorMessage()
-      this.map.setCenter(this.props.searchCoordinates);
-      this.addMarker(this.props.searchCoordinates);
-    }
+    this.clearErrorMessage()
+    this.props.info.request.then( result => {
+      try {
+        const coordinates = result.data.results[0].geometry.location;
+        this.map.setCenter(coordinates);
+        this.addMarker(coordinates);
+      } catch (e) {
+        this.showErrorMessage("Dirección no encontrada");
+      }
+    });
   }
 
   render() {
@@ -71,8 +73,13 @@ class GoogleMap extends Component {
   }
 }
 
-function mapStateToProps({ searchCoordinates }) {
-  return { searchCoordinates: searchCoordinates[0] };
+function mapStateToProps({ location }) {
+  const propObject = {};
+  propObject.info = location[0].info;
+  if (location[0]) {
+    propObject.info = location[0].info;
+  }
+  return propObject;
 }
 
 export default connect(mapStateToProps)(GoogleMap);

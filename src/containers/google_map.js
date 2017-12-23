@@ -22,31 +22,22 @@ class GoogleMap extends Component {
 
   addMarker(coordinates = {}) {
     const google = window.google;
+
     const marker = new google.maps.Marker({
       map: this.map,
       position: coordinates
     });
 
-    const infoWindow = new google.maps.InfoWindow({
-      content: 'yes kai'
+    const infoWindow = new google.maps.InfoWindow({ 
+      content: this.props.info.seeking 
     });
 
-    marker.addListener('click', () => { infoWindow.open(this.map, marker) });
-  }
-
-  addInfoWindow() {
-    //const infoWindow = new google.maps.InfoWindow({
-      //content: 'yes kai'
-    //});
-  }
-  
-  componentDidMount() {
-    this.map = this.initMap();
+    infoWindow.open(this.map, marker);
   }
 
   clearErrorMessage() {
     const el = document.getElementsByClassName("App-intro")[0];
-    el.innerHTML = '';            
+    el.innerText = '';            
   }
 
   showErrorMessage(message) {
@@ -55,8 +46,12 @@ class GoogleMap extends Component {
     el.innerHTML = message;
   }
 
+  componentDidMount() {
+    this.map = this.initMap();
+  }
+
   componentDidUpdate() {
-    this.clearErrorMessage()
+    this.clearErrorMessage();
     this.props.info.request.then( result => {
       try {
         const coordinates = result.data.results[0].geometry.location;
@@ -75,7 +70,6 @@ class GoogleMap extends Component {
 
 function mapStateToProps({ location }) {
   const propObject = {};
-  propObject.info = location[0].info;
   if (location[0]) {
     propObject.info = location[0].info;
   }

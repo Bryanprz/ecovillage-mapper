@@ -20,7 +20,7 @@ class GoogleMap extends Component {
     return map;
   }
 
-  addMarker(coordinates = {}) {
+  addMarkerWindow(coordinates = {}) {
     const google = window.google;
 
     const marker = new google.maps.Marker({
@@ -28,8 +28,23 @@ class GoogleMap extends Component {
       position: coordinates
     });
 
+    const info = this.props.info;
+    const categories = [];
+
+    for (var propertyName in info) {
+      if (info[propertyName] === true) {
+        categories.push(propertyName);
+      }
+    }
+    const windowContent = `
+      <h4>${info.name}</h4>
+      <p>Looking for: ${info.seeking}</p> 
+      <p>Categorias:</p>
+      <kbd>${categories}</kbd>
+      `
+
     const infoWindow = new google.maps.InfoWindow({ 
-      content: this.props.info.seeking 
+      content: windowContent
     });
 
     infoWindow.open(this.map, marker);
@@ -56,7 +71,7 @@ class GoogleMap extends Component {
       try {
         const coordinates = result.data.results[0].geometry.location;
         this.map.setCenter(coordinates);
-        this.addMarker(coordinates);
+        this.addMarkerWindow(coordinates);
       } catch (e) {
         this.showErrorMessage("Dirección no encontrada");
       }

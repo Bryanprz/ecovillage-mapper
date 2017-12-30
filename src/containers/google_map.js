@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { fetchLocations } from '../actions';
 import '../style/google_map.css';
 
 class GoogleMap extends Component {
@@ -63,6 +64,7 @@ class GoogleMap extends Component {
 
   componentDidMount() {
     this.map = this.initMap();
+    this.props.fetchLocations();
   }
 
   componentDidUpdate() {
@@ -83,12 +85,12 @@ class GoogleMap extends Component {
   }
 }
 
-function mapStateToProps({ location }) {
+function mapStateToProps({ newLocation }) {
   const propObject = {};
-  if (location[0]) {
-    propObject.info = location[0].info;
+  if (newLocation[0]) {
+    propObject.info = newLocation[0].info;
   }
   return propObject;
 }
 
-export default connect(mapStateToProps)(GoogleMap);
+export default connect(mapStateToProps, { fetchLocations })(GoogleMap);

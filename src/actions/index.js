@@ -2,6 +2,7 @@ import axios from 'axios';
 import * as firebase from 'firebase';
 
 export const ADD_LOCATION = 'ADD_LOCATION';
+export const FETCH_LOCATIONS = 'FETCH_LOCATIONS';
 const MAP_ROOT_URL = `https://maps.googleapis.com/maps/api/geocode/json`;
 
 var config = {
@@ -16,17 +17,13 @@ var config = {
 firebase.initializeApp(config);
 
 export function fetchLocations() {
-  firebase.database().ref().on('value', snapshot => {
-    console.log('database ref: ', snapshot.val());
-  });
   return dispatch => {
-    //Locations.on('value', snapshot => {
-      //console.log('snapshot: ', snapshot);
-      //dispatch({
-        //type: ADD_LOCATION,
-        //payload: snapshot.val()
-      //});
-    //});
+    firebase.database().ref().on('value', snapshot => {
+      dispatch({
+        type: FETCH_LOCATIONS,
+        payload: snapshot.val()
+      });
+    });
   }
 }
 

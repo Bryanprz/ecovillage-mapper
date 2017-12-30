@@ -32,9 +32,9 @@ class Locations extends React.Component {
     }
 
     return (
-      <ul className="location-list list-group">
+      <div className="location-list list-group">
         {this.showLocations()}
-      </ul>
+      </div>
     )
   }
 }

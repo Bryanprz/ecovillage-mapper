@@ -1,23 +1,24 @@
 import React from 'react';
+import '../style/styles.css';
 
 const LocationDetail = ({ location }) => {
+  const categories = [];
+  
+ for (var key in location) {
+   if (location[key] === true) {
+     categories.push(key);
+   }
+ } 
+
   return (
-    <li className="list-group-item">
-      <div className="row">
-        <div className="col-md-2">
-          <h3>{location['name']}</h3>
-        </div>
-        <div className="col-md-2">
-          <div>{location['address']}</div>
-        </div>
-        <div className="col-md-4">
-          <div>{location['seeking']}</div>
-        </div>
-        <div className="col-md-4">
-          <small>tags go here...</small>
-        </div>
-      </div>
-    </li>
+    <div className="list-group-item">
+      <h5>{ location['name'] }</h5>
+      <div>{ location['address'] }</div>
+      <div>Buscando: { location['seeking'] }</div>
+      <small className="categories">{ categories.toString() }</small><br />
+      <button type="button" className="btn btn-success btn-sm">Aprobar</button>
+      <button type="button" className="btn btn-danger btn-sm">Borrar</button>
+    </div>
   )
 };
 

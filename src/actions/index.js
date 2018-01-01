@@ -1,9 +1,6 @@
-import axios from 'axios';
 import * as firebase from 'firebase';
 
-export const ADD_LOCATION = 'ADD_LOCATION';
 export const FETCH_LOCATIONS = 'FETCH_LOCATIONS';
-const MAP_ROOT_URL = `https://maps.googleapis.com/maps/api/geocode/json`;
 
 var config = {
   apiKey: "AIzaSyC4UDfcaOGCd6rZpCp4EgB4oJljXEDBh6g",
@@ -29,15 +26,7 @@ export function fetchLocations() {
 }
 
 export function addLocation(values = {}) {
-  database.push(values);
-
-  const url = `${MAP_ROOT_URL}?address=${values.address}`;
-  values.request = axios.get(url);
-
-  return { 
-  	type: ADD_LOCATION,
-    values: values
-  };
+  return dispatch => database.push(values);
 }
 
 export function deleteLocation(id) {

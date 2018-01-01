@@ -102,10 +102,6 @@ function mapStateToProps({ newLocation, locations }) {
     propObject.locations = locations.locations;
   } 
 
-  if (newLocation[0]) {
-    propObject.info = newLocation[0].info;
-  }
-
   return propObject;
 }
 

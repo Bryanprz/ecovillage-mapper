@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { addLocation } from '../actions';
 import '../style/destination_new.css';
 
-class DestinationNew extends Component {
+class LocationNewForm extends Component {
   renderField(field) {
     const { meta: { touched, error } } = field; // meta = field.meta; touched = meta.touched
     const className = `form-group ${touched && error ? 'has-danger' : ''}`;
@@ -133,7 +133,7 @@ function validate(values) {
 
 export default reduxForm({
   validate,
-  form: 'DestinationNewForm'
+  form: 'LocationNewForm'
 })(
-  connect(null, { addLocation })(DestinationNew)
+  connect(null, { addLocation })(LocationNewForm)
 );

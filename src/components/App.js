@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from '../logo.png';
 import '../style/App.css';
 import GoogleMap from '../containers/google_map';
-import DestinationNew from './destination_new';
+import LocationNewForm from './location_new_form';
 
 class App extends Component {
   render() {
@@ -16,7 +16,7 @@ class App extends Component {
           Mapa para busquar encuentros, eco-aldeas, ceremonias y mas...
         </p>
         <div className="row">
-          <DestinationNew />
+          <LocationNewForm />
           <GoogleMap lat="48.137" lng="11.5752" />
         </div>
       </div>

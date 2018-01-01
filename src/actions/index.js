@@ -15,6 +15,7 @@ var config = {
 };
 
 firebase.initializeApp(config);
+const database = firebase.database().ref().child('locations');
 
 export function fetchLocations() {
   return dispatch => {
@@ -28,7 +29,7 @@ export function fetchLocations() {
 }
 
 export function addLocation(values = {}) {
-  firebase.database().ref().child('locations').push(values);
+  database.push(values);
 
   const url = `${MAP_ROOT_URL}?address=${values.address}`;
   values.request = axios.get(url);
@@ -37,4 +38,8 @@ export function addLocation(values = {}) {
   	type: ADD_LOCATION,
     values: values
   };
+}
+
+export function deleteLocation(id) {
+  return dispatch => database.child(id).remove();
 }

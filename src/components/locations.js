@@ -22,7 +22,11 @@ class Locations extends React.Component {
 
     return locationsList.map( location => {
       const key = Object.keys(location)[0];
-      return <LocationDetail key={key} location={Object.values(location)[0]} />;
+      return <LocationDetail 
+        key={key} 
+        location={Object.values(location)[0]} 
+        id={key}
+      />;
     });
   }
 

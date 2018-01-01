@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchLocations } from '../actions';
 import '../style/google_map.css';
+import axios from 'axios';
+import _ from 'lodash';
 
 class GoogleMap extends Component {
   initMap() {
@@ -11,7 +13,7 @@ class GoogleMap extends Component {
     const google = window.google;
 
     const map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 12,
+      zoom: 10,
       center: {
         lat: lat,
         lng: lng
@@ -21,25 +23,24 @@ class GoogleMap extends Component {
     return map;
   }
 
-  addMarkerWindow(coordinates = {}) {
+  addMarkerWindow(location = {}) {
     const google = window.google;
 
     const marker = new google.maps.Marker({
       map: this.map,
-      position: coordinates
+      position: location.coordinates
     });
 
-    const info = this.props.info;
     const categories = [];
 
-    for (var propertyName in info) {
-      if (info[propertyName] === true) {
-        categories.push(propertyName);
+    for (var categoryName in location) {
+      if (location[categoryName] === true) {
+        categories.push(categoryName);
       }
     }
     const windowContent = `
-      <h4>${info.name}</h4>
-      <p>Looking for: ${info.seeking}</p> 
+      <h4>${location.name}</h4>
+      <p>Looking for: ${location.seeking}</p> 
       <p>Categorias:</p>
       <kbd>${categories}</kbd>
       `
@@ -67,17 +68,26 @@ class GoogleMap extends Component {
     this.props.fetchLocations();
   }
 
-  componentDidUpdate() {
-    this.clearErrorMessage();
-    this.props.info.request.then( result => {
+  setCoords(location) {
+    const MAP_ROOT_URL = `https://maps.googleapis.com/maps/api/geocode/json`;
+    const url = `${MAP_ROOT_URL}?address=${location.address}`;
+    const request = axios.get(url);
+
+    request.then( result => {
       try {
-        const coordinates = result.data.results[0].geometry.location;
-        this.map.setCenter(coordinates);
-        this.addMarkerWindow(coordinates);
+        location.coordinates = result.data.results[0].geometry.location;
+        console.log('location: ', location);
+        this.map.setCenter(location.coordinates);
+        this.addMarkerWindow(location);
       } catch (e) {
         this.showErrorMessage("Dirección no encontrada");
       }
     });
+  }
+
+  componentDidUpdate() {
+    this.clearErrorMessage();
+    _.toArray(this.props.locations).forEach( location => this.setCoords(location) );
   }
 
   render() {
@@ -85,11 +95,17 @@ class GoogleMap extends Component {
   }
 }
 
-function mapStateToProps({ newLocation }) {
+function mapStateToProps({ newLocation, locations }) {
   const propObject = {};
+
+  if (locations !== null) {
+    propObject.locations = locations.locations;
+  } 
+
   if (newLocation[0]) {
     propObject.info = newLocation[0].info;
   }
+
   return propObject;
 }
 

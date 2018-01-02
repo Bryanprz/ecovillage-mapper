@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from '../logo.png';
 import '../style/App.css';
-import GoogleMap from '../containers/google_map';
+import GoogleMap from './google_map';
 import LocationNewForm from './location_new_form';
 
 class App extends Component {
@@ -10,7 +10,6 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to the new World</h1>
         </header>
         <p className="App-intro">
           Mapa para busquar encuentros, eco-aldeas, ceremonias y mas...

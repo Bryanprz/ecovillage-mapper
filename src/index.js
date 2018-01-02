@@ -10,7 +10,7 @@ import ReduxPromise from 'redux-promise';
 import reducers from './reducers';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Locations from './components/locations';
-import GoogleMap from './containers/google_map';
+import GoogleMap from './components/google_map';
 
 const createStoreWithMiddleware = applyMiddleware(ReduxPromise, thunk)(createStore);
 

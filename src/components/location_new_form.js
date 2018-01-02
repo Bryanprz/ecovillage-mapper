@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { addLocation } from '../actions';
-import '../style/destination_new.css';
+import '../style/location_new.css';
+import '../style/styles.css';
 
 class LocationNewForm extends Component {
   renderField(field) {
@@ -53,7 +54,7 @@ class LocationNewForm extends Component {
 
     return (
       <div className="col-md-4" >
-        <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+        <form id="new-location" onSubmit={handleSubmit(this.onSubmit.bind(this))}>
           <Field
             name="name"
             placeholder="Nombre de ubicación"

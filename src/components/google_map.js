@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchLocations } from '../actions';
+import { fetchLocations, deleteLocation } from '../actions';
 import '../style/google_map.css';
 import axios from 'axios';
 import _ from 'lodash';
@@ -13,7 +13,7 @@ class GoogleMap extends Component {
     const google = window.google;
 
     const map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 10,
+      zoom: 4,
       center: {
         lat: lat,
         lng: lng
@@ -61,6 +61,7 @@ class GoogleMap extends Component {
     const el = document.getElementsByClassName("App-intro")[0];
     el.classList.add("error-message");
     el.innerHTML = message;
+    console.log('here: ', el);
   }
 
   componentDidMount() {
@@ -76,17 +77,18 @@ class GoogleMap extends Component {
     request.then( result => {
       try {
         location.coordinates = result.data.results[0].geometry.location;
-        console.log('location: ', location);
         this.map.setCenter(location.coordinates);
         this.addMarkerWindow(location);
       } catch (e) {
-        this.showErrorMessage("Dirección no encontrada");
+        console.error('Address not found for following location: ', location, 'Location deleted from database.');
+        this.showErrorMessage(`Dirección no encontrada para ${location.address}`);
+        this.props.deleteLocation(location.key);
       }
     });
   }
 
   componentDidUpdate() {
-    this.clearErrorMessage();
+    //this.clearErrorMessage();
     _.toArray(this.props.locations).forEach( location => this.setCoords(location) );
   }
 
@@ -95,14 +97,17 @@ class GoogleMap extends Component {
   }
 }
 
-function mapStateToProps({ newLocation, locations }) {
+function mapStateToProps({ locations }) {
   const propObject = {};
 
   if (locations !== null) {
+    for (var key in locations.locations) {
+      locations.locations[key].key = key;
+    }
     propObject.locations = locations.locations;
   } 
 
   return propObject;
 }
 
-export default connect(mapStateToProps, { fetchLocations })(GoogleMap);
+export default connect(mapStateToProps, { fetchLocations, deleteLocation })(GoogleMap);

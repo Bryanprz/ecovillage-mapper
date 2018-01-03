@@ -52,16 +52,11 @@ class GoogleMap extends Component {
     infoWindow.open(this.map, marker);
   }
 
-  clearErrorMessage() {
-    const el = document.getElementsByClassName("App-intro")[0];
-    el.innerText = '';            
-  }
-
   showErrorMessage(message) {
     const el = document.getElementsByClassName("App-intro")[0];
     el.classList.add("error-message");
     el.innerHTML = message;
-    console.log('here: ', el);
+    setTimeout(() => el.classList.add("animated", "fadeOut"), 4000);
   }
 
   componentDidMount() {
@@ -80,7 +75,6 @@ class GoogleMap extends Component {
         this.map.setCenter(location.coordinates);
         this.addMarkerWindow(location);
       } catch (e) {
-        console.error('Address not found for following location: ', location, 'Location deleted from database.');
         this.showErrorMessage(`Dirección no encontrada para ${location.address}`);
         this.props.deleteLocation(location.key);
       }
@@ -88,7 +82,6 @@ class GoogleMap extends Component {
   }
 
   componentDidUpdate() {
-    //this.clearErrorMessage();
     _.toArray(this.props.locations).forEach( location => this.setCoords(location) );
   }
 

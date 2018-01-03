@@ -1,46 +1,15 @@
 import React, { Component } from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm, reset } from 'redux-form';
 import { connect } from 'react-redux';
 import { addLocation } from '../actions';
 import '../style/location_new.css';
 import '../style/styles.css';
+import RaisedButton from 'material-ui/RaisedButton';
+import { TextField, Checkbox } from 'redux-form-material-ui';
 
 class LocationNewForm extends Component {
-  renderField(field) {
-    const { meta: { touched, error } } = field; // meta = field.meta; touched = meta.touched
-    const className = `form-group ${touched && error ? 'has-danger' : ''}`;
-
-    return (
-      <div className={className}>
-        <div className="text-help">
-          {touched ? error : ''}
-        </div>
-        <input
-          placeholder={field.placeholder} 
-          className="form-control"
-          type={field.type}
-          {...field.input}
-        />
-      </div>
-    )
-  }
-
-  renderCheckboxField(field) {
-    return (
-      <div className="form-group form-check">
-        <input
-          className="form-check-input"
-          type="checkbox"
-          {...field.input}
-        />
-        <label className="form-check-label">{field.label}</label>
-      </div>
-    )
-  }
-
   // callback that runs if handleSubmit (redux form prop) validates
   onSubmit(values) {
-    // sending to actioncreator
     this.props.addLocation(values); 
   }
 
@@ -54,61 +23,60 @@ class LocationNewForm extends Component {
 
     return (
       <div className="col-md-4" >
-        <form id="new-location" onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+        <form onSubmit={handleSubmit(this.onSubmit.bind(this))} className="form-style">
           <Field
             name="name"
             placeholder="Nombre de ubicación"
-            type="text"
-            component={this.renderField}
+            component={TextField}
           />
           <Field
             name="address"
             placeholder="Direccion de nuevo lugar"
             type="text"
-            component={this.renderField}
+            component={TextField}
           />
           <Field
             name="seeking"
             placeholder="Que estan buscando?"
             type="text"
-            component={this.renderField}
+            component={TextField}
           />
           <Field
             name="salud"
             label="Salud y Bienestar"
-            component={this.renderCheckboxField}
+            component={Checkbox}
           />
           <Field
             name="arte"
             label="Arte y Cultura"
-            component={this.renderCheckboxField}
+            component={Checkbox}
           />
           <Field
             name="economias"
             label="Economías Solidarias"
-            component={this.renderCheckboxField}
+            component={Checkbox}
           />
           <Field
             name="politica"
             label="PlataFormas de Incidencia Política / Institucional"
-            component={this.renderCheckboxField}
+            component={Checkbox}
           />
           <Field
             name="educacion"
             label="Plataformas de Pedagogía / Educación / Comunicación"
-            component={this.renderCheckboxField}
+            component={Checkbox}
           />
           <Field
             name="ecologia"
             label="EcoLogia Ambiental, EcoTurismo, Diseños y Tecnología"
-            component={this.renderCheckboxField}
+            component={Checkbox}
           />
           <Field
             name="espiritualidad"
             label="Espiritualidad & Realización del Ser"
-            component={this.renderCheckboxField}
+            component={Checkbox}
           />
-          <button className="btn btn-primary" type="submit">Agregue Nuevo Lugar</button>
+          <RaisedButton label="Agregue Nuevo Lugar" primary={true} type="submit" />
         </form>
       </div>
     )
@@ -132,9 +100,14 @@ function validate(values) {
   return errors; 
 }
 
+function afterSubmit(result, dispatch) {
+  dispatch(reset('LocationNewForm'));
+}
+
 export default reduxForm({
   validate,
-  form: 'LocationNewForm'
+  form: 'LocationNewForm',
+  onSubmitSuccess: afterSubmit
 })(
   connect(null, { addLocation })(LocationNewForm)
 );

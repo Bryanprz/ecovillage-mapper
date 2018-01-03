@@ -1,5 +1,5 @@
-.App {
-  text-align: center;
+.form-style {
+  margin-left: 15px;
 }
 
 .App-logo {
@@ -16,6 +16,7 @@
 
 .App-title {
   font-size: 1.5em;
+  text-align: center;
 }
 
 .App-intro {

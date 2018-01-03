@@ -9,21 +9,3 @@ const rootReducer = combineReducers({
 })
 
 export default rootReducer;
-
-// State Tree
-//
-// - Locations
-//
-// -- location 1 index (object)
-// --- searchCoordinates (object)
-// --- address (string)
-// --- lookingFor (string)
-// --- categories (array)
-// --- link to homepage (link)
-//
-// -- location 2 index
-// --- searchCoordiantes
-// --- address (string)
-// --- lookingFor (string)
-// --- categories (array)
-// --- link to homepage (link)

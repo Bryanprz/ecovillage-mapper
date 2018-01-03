@@ -22,63 +22,61 @@ class LocationNewForm extends Component {
     const { handleSubmit } = this.props; 
 
     return (
-      <div className="col-md-4" >
-        <form onSubmit={handleSubmit(this.onSubmit.bind(this))} className="form-style">
-          <Field
-            name="name"
-            placeholder="Nombre de ubicación"
-            component={TextField}
-          />
-          <Field
-            name="address"
-            placeholder="Direccion de nuevo lugar"
-            type="text"
-            component={TextField}
-          />
-          <Field
-            name="seeking"
-            placeholder="Que estan buscando?"
-            type="text"
-            component={TextField}
-          />
-          <Field
-            name="salud"
-            label="Salud y Bienestar"
-            component={Checkbox}
-          />
-          <Field
-            name="arte"
-            label="Arte y Cultura"
-            component={Checkbox}
-          />
-          <Field
-            name="economias"
-            label="Economías Solidarias"
-            component={Checkbox}
-          />
-          <Field
-            name="politica"
-            label="PlataFormas de Incidencia Política / Institucional"
-            component={Checkbox}
-          />
-          <Field
-            name="educacion"
-            label="Plataformas de Pedagogía / Educación / Comunicación"
-            component={Checkbox}
-          />
-          <Field
-            name="ecologia"
-            label="EcoLogia Ambiental, EcoTurismo, Diseños y Tecnología"
-            component={Checkbox}
-          />
-          <Field
-            name="espiritualidad"
-            label="Espiritualidad & Realización del Ser"
-            component={Checkbox}
-          />
-          <RaisedButton label="Agregue Nuevo Lugar" primary={true} type="submit" />
-        </form>
-      </div>
+      <form onSubmit={handleSubmit(this.onSubmit.bind(this))} className="form-style">
+        <Field
+          name="name"
+          placeholder="Nombre de ubicación"
+          component={TextField}
+        />
+        <Field
+          name="address"
+          placeholder="Direccion de nuevo lugar"
+          type="text"
+          component={TextField}
+        />
+        <Field
+          name="seeking"
+          placeholder="Que estan buscando?"
+          type="text"
+          component={TextField}
+        />
+        <Field
+          name="salud"
+          label="Salud y Bienestar"
+          component={Checkbox}
+        />
+        <Field
+          name="arte"
+          label="Arte y Cultura"
+          component={Checkbox}
+        />
+        <Field
+          name="economias"
+          label="Economías Solidarias"
+          component={Checkbox}
+        />
+        <Field
+          name="politica"
+          label="PlataFormas de Incidencia Política / Institucional"
+          component={Checkbox}
+        />
+        <Field
+          name="educacion"
+          label="Plataformas de Pedagogía / Educación / Comunicación"
+          component={Checkbox}
+        />
+        <Field
+          name="ecologia"
+          label="EcoLogia Ambiental, EcoTurismo, Diseños y Tecnología"
+          component={Checkbox}
+        />
+        <Field
+          name="espiritualidad"
+          label="Espiritualidad & Realización del Ser"
+          component={Checkbox}
+        />
+        <RaisedButton label="Agregue Nuevo Lugar" primary={true} type="submit" />
+      </form>
     )
   }
 }

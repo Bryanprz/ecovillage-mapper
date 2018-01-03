@@ -12,10 +12,14 @@ class App extends Component {
       <MuiThemeProvider>
         <div className="App">
           <AppBar title="EcoAldeas" className="App-title" />
-          <div className="App-intro"></div>
+          <div className="notice"></div>
           <div className="row">
-            <LocationNewForm />
-            <GoogleMap lat="6.2442" lng="75.5812" />
+            <div className="col-md-4">
+              <LocationNewForm />
+            </div>
+            <div className="col-md-8">
+              <GoogleMap lat="6.2442" lng="75.5812" />
+            </div>
           </div>
         </div>
       </MuiThemeProvider>

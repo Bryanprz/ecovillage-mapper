@@ -53,10 +53,10 @@ class GoogleMap extends Component {
   }
 
   showErrorMessage(message) {
-    const el = document.getElementsByClassName("App-intro")[0];
+    const el = document.getElementsByClassName("notice")[0];
     el.classList.add("error-message");
     el.innerHTML = message;
-    setTimeout(() => el.classList.add("animated", "fadeOut"), 4000);
+    setTimeout(() => el.innerHTML = "", 3000);
   }
 
   componentDidMount() {

@@ -1,52 +1,45 @@
 import React from 'react';
 import TextField from 'material-ui/TextField';
 import '../style/styles.css';
-import { InstantSearch, Hits, SearchBox } from 'react-instantsearch/dom';
-import LocationSearchResult from './location_search_result';
+import { SearchBox, Hits, Highlight } from 'react-instantsearch/dom';
 import { connectHighlight, connectSearchBox } from 'react-instantsearch/connectors';
-
-const CustomHighlight = connectHighlight(
-    ({ highlight, attributeName, hit, highlightProperty }) => {
-      const parsedHit = highlight({
-        attributeName,
-        hit,
-        highlightProperty: '_highlightResult'
-      });
-      console.log('connectHighlight: ', connectHighlight);
-      const highlightedHits = parsedHit.map(part => {
-        if (part.isHighlighted) return <mark>{part.value}</mark>;
-        return part.value;
-      });
-      return <div>{highlightedHits}</div>;
-    }
-    );
 
 const Hit = ({ hit }) => {
   return (
-    <p>
-      <CustomHighlight attributeName="name" hit={hit} />
-    </p>
+    <div className="hit">
+      <span className="hit">
+        <Highlight attributeName="name" hit={hit} />
+        <Highlight attributeName="address" hit={hit} tagName="mark" />
+      </span>
+    </div>
   );
-};
+}
 
-const Search = () => (
-  <div>
-    <InstantSearch
-      appId="J0GCXLWRZ3"
-      apiKey="c7cf3c81f688ae18a011b652b18b2196"
-      indexName="dev_LOCATIONS"
-    >
-      <TextField
-        hintText="Busque Aldeas por lugar o tipos de voluntarios."
-        fullWidth={true}
-        className="search"
-      />
-      <SearchBox />
-      <div className="container">
-        <Hits hitComponent={Hit} />
+const Content = () => {
+  return (
+    <div className="hits-content">
+      <Hits hitComponent={Hit}/>
+    </div>
+  )
+}
+
+const MySearchBox = ({ currentRefinement, refine }) => {
+  return (
+    <div>
+      <div className="search">
+        <TextField
+          value={currentRefinement}
+          fullWidth={true}
+          hintText="Busque aqui"
+          onChange={e => refine(e.target.value)}
+        />
       </div>
-    </InstantSearch>
-  </div>
-);
+      <main>
+        <Content />
+      </main>
+    </div>
+  );
+}
 
-export default Search;
+const ConnectedSearchBox = connectSearchBox(MySearchBox);
+export default ConnectedSearchBox;

@@ -9,6 +9,8 @@
     "material-ui": "^0.20.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-instantsearch": "^4.4.0",
+    "react-instantsearch-theme-algolia": "^4.4.0",
     "react-redux": "^5.0.6",
     "react-router": "^4.0.0",
     "react-router-dom": "^4.2.2",
@@ -24,5 +26,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  }
+  },
+  "devDependencies": {}
 }

@@ -7,7 +7,6 @@ import { Hits, Highlight } from 'react-instantsearch/dom';
 import { connectHighlight, connectSearchBox } from 'react-instantsearch/connectors';
 
 const Hit = ({ hit }) => {
-  console.log('hit: ', hit);
   return (
     <div>
       <div className="hit">
@@ -40,7 +39,9 @@ const CustomHighlight = connectHighlight(
 const Content = () => {
   return (
     <div>
-      <Subheader>Resultados</Subheader>
+      <span className="subtitle">
+        <Subheader>Resultados</Subheader>
+      </span>
       <Hits hitComponent={Hit}/>
     </div>
   )
@@ -55,7 +56,7 @@ const MySearchBox = ({ currentRefinement, refine }) => {
           floatingLabelText="Busque aqui"
           fullWidth={true}
           multiLine={true}
-          hintText="Ejemplo: Voluntarios, Colombia"
+          hintText="Ejemplo: Voluntarios, eco-aldea, Colombia"
           onChange={e => refine(e.target.value)}
         />
       </div>

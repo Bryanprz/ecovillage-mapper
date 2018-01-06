@@ -1,15 +1,6 @@
 .form-group {
   margin-left: 15px;
 }
-
-.form-check {
-  text-align: left;
-}
-
-.form-check-label {
-  margin-left: 5px;
-}
-
 .btn {
   background: #33a6cc;
   color: #ffffff;
@@ -20,4 +11,25 @@
 .btn:hover {
   background: #3276b1;
   color: #ffffff;
+}
+
+.form-subtitle {
+  position: relative;
+  top: 21px;
+  left: 4px;
+}
+
+.form-style {
+  margin-left: 20px;
+  margin-top: 26px;
+  line-height: 3;
+}
+
+.form-button {
+  line-height: normal;
+  margin-top: 13px;
+}
+
+.form-checkboxes {
+  margin-top: 18px;
 }

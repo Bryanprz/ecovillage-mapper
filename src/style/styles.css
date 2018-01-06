@@ -22,7 +22,9 @@
 
 .sidebar {
   border-right: 1px solid #d3d3d3;
+  max-height: 100vh;
   min-height: 100vh;
+  overflow: scroll;
 }
 
 .hit {
@@ -44,4 +46,10 @@
 .hit-seeking {
   margin-top: 5px;
   font-size: 90%;  
+}
+
+.subtitle {
+  position: relative;
+  top: 13px;
+  left: 3px;
 }

@@ -1,23 +1,46 @@
 import React from 'react';
 import TextField from 'material-ui/TextField';
+import Divider from 'material-ui/Divider';
+import Subheader from 'material-ui/Subheader';
 import '../style/styles.css';
-import { SearchBox, Hits, Highlight } from 'react-instantsearch/dom';
+import { Hits, Highlight } from 'react-instantsearch/dom';
 import { connectHighlight, connectSearchBox } from 'react-instantsearch/connectors';
 
 const Hit = ({ hit }) => {
+  console.log('hit: ', hit);
   return (
-    <div className="hit">
-      <span className="hit">
-        <Highlight attributeName="name" hit={hit} />
-        <Highlight attributeName="address" hit={hit} tagName="mark" />
-      </span>
+    <div>
+      <div className="hit">
+        <span className="hit-name">
+          <CustomHighlight attributeName="name" hit={hit} />
+        </span>
+        <small className="hit-address">
+          <CustomHighlight attributeName="address" hit={hit} />
+        </small>
+        <span className="hit-seeking">
+          <CustomHighlight attributeName="seeking" hit={hit} />
+        </span>
+      </div>
+      <Divider />
     </div>
   );
 }
 
+const CustomHighlight = connectHighlight(
+  ({ highlight, attributeName, hit, highlightProperty }) => {
+    const parsedHit = highlight({ attributeName, hit, highlightProperty: '_highlightResult' }); 
+    const highlightedHits = parsedHit.map( location => {
+      if (location.isHighlighted) return <mark>{location.value}</mark>;
+      return location.value; 
+    });
+    return <div>{highlightedHits}</div>;
+  }    
+);
+
 const Content = () => {
   return (
-    <div className="hits-content">
+    <div>
+      <Subheader>Resultados</Subheader>
       <Hits hitComponent={Hit}/>
     </div>
   )
@@ -29,14 +52,16 @@ const MySearchBox = ({ currentRefinement, refine }) => {
       <div className="search">
         <TextField
           value={currentRefinement}
+          floatingLabelText="Busque aqui"
+          floatingLabelFixed={true}
           fullWidth={true}
-          hintText="Busque aqui"
+          hintText="Ejemplo: Voluntarios, Colombia"
           onChange={e => refine(e.target.value)}
         />
       </div>
-      <main>
+      <div>
         <Content />
-      </main>
+      </div>
     </div>
   );
 }

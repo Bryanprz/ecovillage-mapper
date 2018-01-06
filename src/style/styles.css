@@ -13,3 +13,38 @@
   margin-left: 10px;
   background-color: #d9534f;
 }
+
+.search {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.hit-name {
+  font-color: blue;
+}
+
+.sidebar {
+  width: 408px;
+  border-right: 1px solid #d3d3d3;
+}
+
+.hit {
+  margin-left: 20px;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  font-family: "Roboto";
+}
+
+.hit-name {
+  font-weight: bold;
+  font-size: 110%;
+}
+
+.hit-address {
+  color: #8f9193;
+}
+
+.hit-seeking {
+  margin-top: 5px;
+  font-size: 90%;  
+}

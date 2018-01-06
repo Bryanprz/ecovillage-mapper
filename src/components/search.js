@@ -53,8 +53,8 @@ const MySearchBox = ({ currentRefinement, refine }) => {
         <TextField
           value={currentRefinement}
           floatingLabelText="Busque aqui"
-          floatingLabelFixed={true}
           fullWidth={true}
+          multiLine={true}
           hintText="Ejemplo: Voluntarios, Colombia"
           onChange={e => refine(e.target.value)}
         />

@@ -28,23 +28,27 @@ class App extends Component {
           <div className="notice"></div>
           <Tabs>
             <Tab label="Buscar">
-              <div className="sidebar">
-                <InstantSearch
-                  appId="J0GCXLWRZ3"
-                  apiKey="c7cf3c81f688ae18a011b652b18b2196"
-                  indexName="dev_LOCATIONS"
-                >
-                  <Search />
-                </InstantSearch>
+              <div className="row no-gutters">
+                <div className="sidebar col-sm-3">
+                  <InstantSearch
+                    appId="J0GCXLWRZ3"
+                    apiKey="c7cf3c81f688ae18a011b652b18b2196"
+                    indexName="dev_LOCATIONS"
+                  >
+                    <Search />
+                  </InstantSearch>
+                </div>
               </div>
             </Tab>
             <Tab label="Agregar">
-              <Subheader>Agregar Nueva Eco-Aldea</Subheader>
-              <div className="col-md-4">
-                <LocationNewForm />
-              </div>
-              <div className="col-md-8">
-                <GoogleMap lat="6.2442" lng="75.5812" />
+              <div className="row no-gutters">
+                <Subheader>Agregar Nueva Eco-Aldea</Subheader>
+                <div className="col-md-4">
+                  <LocationNewForm />
+                </div>
+                <div className="col-md-8">
+                  <GoogleMap lat="6.2442" lng="75.5812" />
+                </div>
               </div>
             </Tab>
           </Tabs>

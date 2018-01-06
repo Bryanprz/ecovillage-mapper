@@ -17,15 +17,12 @@
 .search {
   margin-left: 20px;
   margin-right: 20px;
-}
-
-.hit-name {
-  font-color: blue;
+  margin-top: 5px;
 }
 
 .sidebar {
-  width: 408px;
   border-right: 1px solid #d3d3d3;
+  min-height: 100vh;
 }
 
 .hit {

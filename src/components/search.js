@@ -3,13 +3,13 @@ import TextField from 'material-ui/TextField';
 import Divider from 'material-ui/Divider';
 import Subheader from 'material-ui/Subheader';
 import '../style/styles.css';
-import { Hits, Highlight } from 'react-instantsearch/dom';
+import { Hits } from 'react-instantsearch/dom';
 import { connectHighlight, connectSearchBox } from 'react-instantsearch/connectors';
 
 const Hit = ({ hit }) => {
   return (
     <div>
-      <div className="hit">
+      <div key={ hit.objectID } className="hit">
         <span className="hit-name">
           <CustomHighlight attributeName="name" hit={hit} />
         </span>

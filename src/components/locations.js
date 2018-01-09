@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import LocationDetail from './location_detail';
 import { connect } from 'react-redux';
 import { fetchLocations } from '../actions';
-import _ from 'lodash';
 import '../style/styles.css';
 
-class Locations extends React.Component {
+class Locations extends Component {
   componentDidMount() {
     this.props.fetchLocations(); 
   }

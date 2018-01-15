@@ -11,6 +11,12 @@ import Subheader from 'material-ui/Subheader';
 class LocationNewForm extends Component {
   // callback that runs if handleSubmit (redux form prop) validates
   onSubmit(values) {
+    values.categories = [];
+    for (var value in values) {
+      if (values[value] === true) {
+        values.categories.push(value);
+      }
+    }
     this.props.addLocation(values); 
   }
 
@@ -107,6 +113,7 @@ function validate(values) {
 }
 
 function afterSubmit(result, dispatch) {
+  // TODO success message goes here
   dispatch(reset('LocationNewForm'));
 }
 

@@ -114,6 +114,7 @@ function validate(values) {
 
 function afterSubmit(result, dispatch) {
   // TODO success message goes here
+  window.location.reload();
   dispatch(reset('LocationNewForm'));
 }
 

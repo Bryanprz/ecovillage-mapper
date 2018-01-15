@@ -3,7 +3,7 @@ import TextField from 'material-ui/TextField';
 import Divider from 'material-ui/Divider';
 import Subheader from 'material-ui/Subheader';
 import '../style/styles.css';
-import { Hits } from 'react-instantsearch/dom';
+import { RefinementList, Hits } from 'react-instantsearch/dom';
 import { connectHighlight, connectSearchBox } from 'react-instantsearch/connectors';
 
 const Hit = ({ hit }) => {
@@ -59,6 +59,9 @@ const MySearchBox = ({ currentRefinement, refine }) => {
           hintText="Ejemplo: Voluntarios, eco-aldea, Colombia"
           onChange={e => refine(e.target.value)}
         />
+        <div className="refinements">
+          <RefinementList attributeName="categories" />
+        </div>
       </div>
       <div>
         <Content />

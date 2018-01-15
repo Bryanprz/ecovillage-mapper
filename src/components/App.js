@@ -6,6 +6,7 @@ import '../style/App.css';
 //   Components
 import GoogleMap from './google_map';
 import LocationNewForm from './location_new_form';
+import LocationInfo from './location_info';
 
 //   Material UI
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -19,7 +20,7 @@ import { InstantSearch } from 'react-instantsearch/dom';
 
 class App extends Component {
   toggleSidebar() {
-    var sidebar = document.getElementById('sidebar');
+    var sidebar = document.getElementById('sidebar-toggle');
     if (sidebar.style.display === "none") {
       sidebar.style.display = "block";
     } else {
@@ -41,7 +42,7 @@ class App extends Component {
             <Tab label="Buscar" className="tab">
               <div className="row no-gutters">
                 <div className="sidebar"> 
-                  <div id="sidebar">
+                  <div id="sidebar-toggle">
                     <InstantSearch
                       appId="J0GCXLWRZ3"
                       apiKey="c7cf3c81f688ae18a011b652b18b2196"
@@ -63,7 +64,7 @@ class App extends Component {
                   <LocationNewForm />
                 </div>
                 <div className="col-sm-9">
-                  <GoogleMap lat="6.2442" lng="75.5812" />
+                  <LocationInfo />
                 </div>
               </div>
             </Tab>

@@ -53,3 +53,12 @@
   top: 13px;
   left: 3px;
 }
+
+.ais-RefinementList__root {
+  font-family: "Roboto";
+  font-size: 90%;
+}
+
+.tab {
+  background-color: black !important;
+}

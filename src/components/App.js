@@ -22,10 +22,10 @@ class App extends Component {
     return (
       <MuiThemeProvider>
         <div className="App">
-          <AppBar title="EcoAldeas" className="App-title" />
+          <AppBar title="Gaia Unión Spir@ll" className="app-bar" />
           <div className="notice"></div>
-          <Tabs>
-            <Tab label="Buscar">
+          <Tabs className="tabs">
+            <Tab label="Buscar" className="tab">
               <div className="row no-gutters">
                 <div className="sidebar col-sm-3">
                   <InstantSearch
@@ -42,7 +42,7 @@ class App extends Component {
               </div>
             </Tab>
 
-            <Tab label="Agregar">
+            <Tab label="Agregar" className="tab">
               <div className="row no-gutters">
                 <div className="sidebar col-sm-3">
                   <LocationNewForm />

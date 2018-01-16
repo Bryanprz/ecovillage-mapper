@@ -31,18 +31,11 @@ class GoogleMap extends Component {
       position: location.coordinates
     });
 
-    const categories = [];
-
-    for (var categoryName in location) {
-      if (location[categoryName] === true) {
-        categories.push(categoryName);
-      }
-    }
     const windowContent = `
       <h4>${location.name}</h4>
       <p>Looking for: ${location.seeking}</p> 
       <p>Categorias:</p>
-      <kbd>${categories}</kbd>
+      <kbd>${location.categories}</kbd>
       `
 
     const infoWindow = new google.maps.InfoWindow({ 

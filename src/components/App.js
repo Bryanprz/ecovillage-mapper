@@ -33,7 +33,7 @@ class App extends Component {
       <MuiThemeProvider>
         <div className="App">
           <AppBar 
-            title="Gaia Unión Spir@ll" 
+            title="Gaia GPS" 
             className="app-bar" 
             onLeftIconButtonClick={this.toggleSidebar.bind(this)} 
           />

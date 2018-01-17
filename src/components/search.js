@@ -1,40 +1,10 @@
 import React from 'react';
 import TextField from 'material-ui/TextField';
-import Divider from 'material-ui/Divider';
 import Subheader from 'material-ui/Subheader';
+import Hit from './hit';
 import '../style/styles.css';
 import { RefinementList, Hits } from 'react-instantsearch/dom';
-import { connectHighlight, connectSearchBox } from 'react-instantsearch/connectors';
-
-const Hit = ({ hit }) => {
-  return (
-    <div>
-      <div key={ hit.objectID } className="hit">
-        <span className="hit-name">
-          <CustomHighlight attributeName="name" hit={hit} />
-        </span>
-        <small className="hit-address">
-          <CustomHighlight attributeName="address" hit={hit} />
-        </small>
-        <span className="hit-seeking">
-          <CustomHighlight attributeName="seeking" hit={hit} />
-        </span>
-      </div>
-      <Divider />
-    </div>
-  );
-}
-
-const CustomHighlight = connectHighlight(
-  ({ highlight, attributeName, hit, highlightProperty }) => {
-    const parsedHit = highlight({ attributeName, hit, highlightProperty: '_highlightResult' }); 
-    const highlightedHits = parsedHit.map( location => {
-      if (location.isHighlighted) return <mark>{location.value}</mark>;
-      return location.value; 
-    });
-    return <div>{highlightedHits}</div>;
-  }    
-);
+import { connectSearchBox } from 'react-instantsearch/connectors';
 
 const Content = () => {
   return (

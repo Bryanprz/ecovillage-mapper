@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchLocations, deleteLocation } from '../actions';
+import { fetchLocations, deleteLocation, saveMap } from '../actions';
 import '../style/google_map.css';
 import axios from 'axios';
 import _ from 'lodash';
@@ -55,6 +55,7 @@ class GoogleMap extends Component {
   componentDidMount() {
     this.map = this.initMap();
     this.props.fetchLocations();
+    this.props.saveMap(this.map);
   }
 
   setCoords(location) {
@@ -75,7 +76,11 @@ class GoogleMap extends Component {
   }
 
   componentDidUpdate() {
-    _.toArray(this.props.locations).forEach( location => this.setCoords(location) );
+    if (this.props.filteredLocation) {
+      this.setCoords(this.props.filteredLocation);
+    } else {
+      _.toArray(this.props.locations).forEach( location => this.setCoords(location) );
+    }
   }
 
   render() {
@@ -83,8 +88,14 @@ class GoogleMap extends Component {
   }
 }
 
-function mapStateToProps({ locations }) {
+function mapStateToProps({ locations, filteredLocation, map }) {
   const propObject = {};
+
+  if (filteredLocation !== null) {
+    propObject.filteredLocations = {};    
+    filteredLocation.key = filteredLocation.objectID;
+    propObject.filteredLocations[filteredLocation.key] = filteredLocation;
+  }
 
   if (locations !== null) {
     for (var key in locations.locations) {
@@ -93,7 +104,12 @@ function mapStateToProps({ locations }) {
     propObject.locations = locations.locations;
   } 
 
+  if (map !== null) {
+    propObject.map = map;
+  }
+
+  console.log('prop object: ', propObject);
   return propObject;
 }
 
-export default connect(mapStateToProps, { fetchLocations, deleteLocation })(GoogleMap);
+export default connect(mapStateToProps, { fetchLocations, deleteLocation, saveMap })(GoogleMap);

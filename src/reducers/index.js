@@ -7,7 +7,7 @@ import { reducer as formReducer } from 'redux-form';
 // State Tree
 const rootReducer = combineReducers({
   locations: FetchLocationsReducer,
-  filteredLocation: FilterLocationsReducer,
+  filteredLocation: FilterLocationsReducer, // TODO needs to return ALL filtered locations
   map: MapReducer,
   form: formReducer
 })

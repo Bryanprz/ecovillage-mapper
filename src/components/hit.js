@@ -11,7 +11,8 @@ class Hit extends Component {
   }
 
   centerMap() {
-    console.log('hit: ', this.props.hit);
+    const hit = this.props.hit;
+    this.props.map.setCenter(hit.coordinates);
   }
 
   render() {
@@ -36,6 +37,10 @@ class Hit extends Component {
   }
 }
 
+function mapStateToProps({ map }) {
+  return { map };
+}
+
 const CustomHighlight = connectHighlight(
   ({ highlight, attributeName, hit, highlightProperty }) => {
     const parsedHit = highlight({ attributeName, hit, highlightProperty: '_highlightResult' }); 
@@ -48,4 +53,4 @@ const CustomHighlight = connectHighlight(
 );
 
 
-export default connect(null, { filterLocation })(Hit);
+export default connect(mapStateToProps, { filterLocation })(Hit);

@@ -76,8 +76,8 @@ class GoogleMap extends Component {
   }
 
   componentDidUpdate() {
-    if (this.props.filteredLocation) {
-      this.setCoords(this.props.filteredLocation);
+    if (this.props.filteredLocations) {
+      _.toArray(this.props.filteredLocations).forEach( location => this.setCoords(location) );
     } else {
       _.toArray(this.props.locations).forEach( location => this.setCoords(location) );
     }
@@ -108,7 +108,7 @@ function mapStateToProps({ locations, filteredLocation, map }) {
     propObject.map = map;
   }
 
-  console.log('prop object: ', propObject);
+  console.log('prop object ', propObject);
   return propObject;
 }
 

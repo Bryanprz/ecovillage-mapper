@@ -1,7 +1,6 @@
 import * as firebase from 'firebase';
 
 export const FETCH_LOCATIONS = 'FETCH_LOCATIONS';
-export const FILTER_LOCATIONS = 'FILTER_LOCATIONS';
 export const MAP = 'MAP';
 
 var config = {
@@ -33,14 +32,6 @@ export function addLocation(values = {}) {
 
 export function deleteLocation(id) {
   return dispatch => database.child(id).remove();
-}
-
-export function filterLocation(location) {
-  console.log('action creator received: ', location);
-  return {
-    type: FILTER_LOCATIONS,
-    payload: location
-  };
 }
 
 export function saveMap(map) {

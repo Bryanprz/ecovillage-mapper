@@ -7,12 +7,13 @@ import '../style/App.css';
 import GoogleMap from './google_map';
 import LocationNewForm from './location_new_form';
 import LocationInfo from './location_info';
+import Search from './search';
 
 //   Material UI
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
 import { Tabs, Tab } from 'material-ui/Tabs';
-import Search from './search';
+import Paper from 'material-ui/Paper';
 
 //   Algolia Search
 import 'react-instantsearch-theme-algolia/style.css';
@@ -29,6 +30,12 @@ class App extends Component {
   }
 
   render() {
+
+    const style = {
+        margin: 20,
+        display: 'inline-block',
+    };
+
     return (
       <MuiThemeProvider>
         <div className="App">
@@ -39,7 +46,7 @@ class App extends Component {
           />
           <div className="notice"></div>
           <Tabs className="tabs">
-            <Tab label="Buscar" className="tab">
+            <Tab label="Buscar" className="tab" >
               <div className="row no-gutters">
                 <div className="sidebar"> 
                   <div id="sidebar-toggle">
@@ -59,13 +66,10 @@ class App extends Component {
             </Tab>
 
             <Tab label="Agregar" className="tab">
-              <div className="row no-gutters">
-                <div className="sidebar col-sm-3">
+              <div className="d-flex justify-content-center no-gutters">
+                <Paper style={style} >
                   <LocationNewForm />
-                </div>
-                <div className="col-sm-9">
-                  <LocationInfo />
-                </div>
+                </Paper>
               </div>
             </Tab>
           </Tabs>

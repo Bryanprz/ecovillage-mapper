@@ -17,6 +17,8 @@
   position: relative;
   top: 21px;
   left: 4px;
+  text-align: center;
+  padding-bottom: 30px;
 }
 
 .form-style {
@@ -30,6 +32,6 @@
   margin-top: 13px;
 }
 
-.form-checkboxes {
-  margin-top: 18px;
+.form-input {
+  padding-bottom: 15px;
 }

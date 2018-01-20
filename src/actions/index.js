@@ -31,7 +31,9 @@ export function addLocation(values = {}) {
 }
 
 export function deleteLocation(id) {
-  return dispatch => database.child(id).remove();
+  if (id) {
+    return dispatch => database.child(id).remove();
+  }
 }
 
 export function saveMap(map) {

@@ -6,7 +6,7 @@
     "axios": "^0.17.1",
     "firebase": "^4.8.1",
     "lodash": "^4.17.4",
-    "material-ui": "^1.0.0-beta.29",
+    "material-ui": "^0.20.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-instantsearch": "^4.4.0",

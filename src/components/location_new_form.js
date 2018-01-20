@@ -37,12 +37,12 @@ class LocationNewForm extends Component {
 
     return (
       <div>
-        <h5 className="form-subtitle">Agregar Entrada</h5>
+        <h5 className="lead form-subtitle">Agregar Entrada</h5>
         <form onSubmit={handleSubmit(this.onSubmit.bind(this))} className="form-style">
           <div className="form-input">
             <Field
               name="name"
-              hintText="Nombre Completo de la Persona, Proyecto Lugar u Organizacion / Full Name of Person, Project Location or Organization"
+              hintText="* Nombre Completo de la Persona, Proyecto Lugar u Organizacion / Full Name of Person, Project Location or Organization"
               component={TextField}
               fullWidth={true}
             />
@@ -50,7 +50,7 @@ class LocationNewForm extends Component {
           <div className="form-input">
             <Field
               name="address"
-              hintText="Pais, Estado, Ciudad, Direccion (opcionales pero recomendadas) / Country, State, City, Address (optional but recommended)"
+              hintText="* Pais, Estado, Ciudad, Direccion (opcionales pero recomendadas) / Country, State, City, Address (optional but recommended)"
               type="text"
               component={TextField}
               fullWidth={true}
@@ -73,6 +73,9 @@ class LocationNewForm extends Component {
               component={TextField}
               fullWidth={true}
             />
+          </div>
+          <div>
+            <small>* Required</small>
           </div>
 
           <List>

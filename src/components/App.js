@@ -33,7 +33,10 @@ class App extends Component {
 
     const style = {
         margin: 20,
+        padding: 30,
+        paddingLeft: 20,
         display: 'inline-block',
+        width: 'auto'
     };
 
     return (

@@ -391,8 +391,12 @@ class LocationNewForm extends Component {
               ]}
             />
           </List>
-          <div className="button-container">
-            <RaisedButton label="Agregue Nuevo Lugar" primary={true} type="submit" className="form-button" />
+          <div className="container">
+            <div className="row justify-content-md-center">
+              <div className="col col-md-auto">
+                <RaisedButton label="Agregue Nuevo Lugar" primary={true} type="submit" className="form-button" />
+              </div>
+            </div>
           </div>
         </form>
       </div>

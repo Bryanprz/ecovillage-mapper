@@ -6,7 +6,6 @@ import '../style/App.css';
 //   Components
 import GoogleMap from './google_map';
 import LocationNewForm from './location_new_form';
-import LocationInfo from './location_info';
 import Search from './search';
 
 //   Material UI

@@ -10,20 +10,34 @@ import '../style/styles.css';
 // ===== MATERIAL UI =====
 import RaisedButton from 'material-ui/RaisedButton';
 import { TextField, Checkbox } from 'redux-form-material-ui';
-import Subheader from 'material-ui/Subheader';
-import DropDownMenu from 'material-ui/DropDownMenu';
-import MenuItem from 'material-ui/MenuItem';
 import {List, ListItem} from 'material-ui/List';
 
 class LocationNewForm extends Component {
   // callback that runs if handleSubmit (redux form prop) validates
   onSubmit(values) {
-    values.categories = [];
+    const category0 = 'categoriesLvl0'; // Required format for Algolia HierarchicalMenu
+    const category1 = 'categoriesLvl1'; // ''
+    values[category0] = [];
+    values[category1] = [];
+
     for (var value in values) {
       if (values[value] === true) {
-        values.categories.push(value);
+        try { 
+          const name = document.getElementById(value).name;
+
+          if (name.includes(">")) {
+            values[category1].push(name);
+          } else {
+            values[category0].push(name);
+          }
+
+          delete values[value];
+        } catch (e) {
+          console.error('Error occurred when trying to find element: ' + value + '. Error: ' + e);
+        }
       }
     }
+    console.log('values: ', values);
     this.props.addLocation(values); 
   }
 
@@ -38,7 +52,7 @@ class LocationNewForm extends Component {
     return (
       <div>
         <h5 className="lead form-subtitle">Agregar Entrada</h5>
-        <form onSubmit={handleSubmit(this.onSubmit.bind(this))} className="form-style">
+        <form id="location-form" onSubmit={handleSubmit(this.onSubmit.bind(this))} className="form-style">
           <div className="form-input">
             <Field
               name="name"
@@ -58,7 +72,7 @@ class LocationNewForm extends Component {
           </div>
           <div className="form-input">
             <Field
-              name="seeking"
+              name="offering"
               hintText="Que Ofrece? / What is being offered?"
               type="text"
               component={TextField}
@@ -86,36 +100,37 @@ class LocationNewForm extends Component {
                   name="salud"
                   label="Salud y Bienestar / Health and Wellbeing"
                   component={Checkbox}
+                  id="salud"
                 />
               } 
               primaryTogglesNestedList
               nestedItems={[
                 <ListItem 
-                  primaryText={ <Field name="nutrition" label="Nutrición & Alimentación / Nutrition" component={Checkbox} /> }
+                  primaryText={ <Field id="salud > nutrición" name="salud > nutrición" label="Nutrición & Alimentación / Nutrition" component={Checkbox} /> }
                   insetChildren
                 />,
                 <ListItem 
-                  primaryText={ <Field name="alternative medicine" label="Medicina AlterNativa / Alternative Medicine" component={Checkbox} /> } 
+                  primaryText={ <Field id="salud > medicina alterNativa" name="salud > medicina alterNativa" label="Medicina AlterNativa / Alternative Medicine" component={Checkbox} /> } 
                   insetChildren
                 />,
                 <ListItem 
-                  primaryText={ <Field name="alternative therapy" label="Terapias Alternativas – Terapeutas / Alternative Therapy" component={Checkbox} /> } 
+                  primaryText={ <Field id="salud > terapias alternativas" name="salud > terapias alternativas" label="Terapias Alternativas – Terapeutas / Alternative Therapy" component={Checkbox} /> } 
                   insetChildren
                 />,
                 <ListItem 
-                  primaryText={ <Field name="plant medicine" label="Medicinas: Plantas y Minerales / Medicines: Plants and Minerals" component={Checkbox} /> } 
+                  primaryText={ <Field id="salud > medicinas: plantas y minerales" name="salud > medicinas: plantas y minerales" label="Medicinas: Plantas y Minerales / Medicines: Plants and Minerals" component={Checkbox} /> } 
                   insetChildren
                 />,
                 <ListItem 
-                  primaryText={ <Field name="conscious birth death" label="Parto Natural y Muerte Consciente / Natural Birth and Conscious Death" component={Checkbox} /> } 
+                  primaryText={ <Field id="salud > parto natural y muerte consciente" name="salud > parto natural y muerte consciente" label="Parto Natural y Muerte Consciente / Natural Birth and Conscious Death" component={Checkbox} /> } 
                   insetChildren
                 />,
                 <ListItem 
-                  primaryText={ <Field name="academies" label="Escuelas y Academias (yoga, reiki, masajes, etc) / Schools and Academies ( yoga, reiki, massage, etc)" component={Checkbox} /> } 
+                  primaryText={ <Field id="salud > escuelas y academias" name="salud > escuelas y academias" label="Escuelas y Academias (yoga, reiki, masajes, etc) / Schools and Academies ( yoga, reiki, massage, etc)" component={Checkbox} /> } 
                   insetChildren
                 />,
                 <ListItem 
-                  primaryText={ <Field name="holistic centers" label="Centros Holisticos / Holistic Centers" component={Checkbox} /> } 
+                  primaryText={ <Field id="salud > centros holisticos" name="salud > centros holisticos" label="Centros Holisticos / Holistic Centers" component={Checkbox} /> } 
                   insetChildren
                 />
               ]}
@@ -124,6 +139,7 @@ class LocationNewForm extends Component {
             <ListItem 
               primaryText={
                 <Field
+                  id="arte"
                   name="arte"
                   label="Arte y Cultura / Art and Culture"
                   component={Checkbox}
@@ -132,47 +148,47 @@ class LocationNewForm extends Component {
               primaryTogglesNestedList
               nestedItems={[
                 <ListItem 
-                  primaryText={ <Field name="music" label="Música / Music" component={Checkbox} /> }
+                  primaryText={ <Field id="arte > musica" name="arte > musica" label="Música / Music" component={Checkbox} /> }
                   insetChildren
                 />,
                 <ListItem 
-                  primaryText={ <Field name="plastic art" label="Arte plástico / Plastic art" component={Checkbox} /> } 
+                  primaryText={ <Field id="arte > arte plastico" name="arte > arte plastico " label="Arte plástico / Plastic art" component={Checkbox} /> } 
                   insetChildren
                 />,
                 <ListItem 
-                  primaryText={ <Field name="stage art" label="Arte escénico (danza, teatro, performance) / Stage art (dance, theater, performance)" component={Checkbox} /> } 
+                  primaryText={ <Field id="arte > arte escénico" name="arte > arte escénico" label="Arte escénico (danza, teatro, performance) / Stage art (dance, theater, performance)" component={Checkbox} /> } 
                   insetChildren
                 />,
                 <ListItem 
-                  primaryText={ <Field name="audiovisual production" label="Producción Audiovisual / Audiovisual Production" component={Checkbox} /> } 
+                  primaryText={ <Field id="arte > producción audivisual" name="arte > producción audivisual" label="Producción Audiovisual / Audiovisual Production" component={Checkbox} /> } 
                   insetChildren
                 />,
                 <ListItem 
-                  primaryText={ <Field name="circus and entertainment" label="Circo y Entretenimiento / Circus and Entertainment" component={Checkbox} /> } 
+                  primaryText={ <Field id="arte > circo y entretenimiento" name="arte > circo y entretenimiento" label="Circo y Entretenimiento / Circus and Entertainment" component={Checkbox} /> } 
                   insetChildren
                 />,
                 <ListItem 
-                  primaryText={ <Field name="cultural houses" label="Casas Culturales / Cultural Houses" component={Checkbox} /> } 
+                  primaryText={ <Field id="arte > casas culturales" name="arte > casas culturales" label="Casas Culturales / Cultural Houses" component={Checkbox} /> } 
                   insetChildren
                 />,
                 <ListItem 
-                  primaryText={ <Field name="theater and movies" label="Teatros y Cines / Theater and Movies" component={Checkbox} /> } 
+                  primaryText={ <Field id="arte > teatros y cines" name="arte > teatros y cines" label="Teatros y Cines / Theater and Movies" component={Checkbox} /> } 
                   insetChildren
                 />,
                 <ListItem 
-                  primaryText={ <Field name="restaurants and cafés" label="Restaurantes, Cafés y Bares / Restaurants, Cafés and Bars" component={Checkbox} /> } 
+                  primaryText={ <Field id="arte > restaurantes, cafés y bares" name="arte > restaurantes, cafés y bares" label="Restaurantes, Cafés y Bares / Restaurants, Cafés and Bars" component={Checkbox} /> } 
                   insetChildren
                 />,
                 <ListItem 
-                  primaryText={ <Field name="multidisciplinary projects" label="Proyectos multidisciplinarios (integran diversas manifestaciones artísticas) / Multidisciplinary Projects" component={Checkbox} /> } 
+                  primaryText={ <Field id="arte > proyectos multidisciplinarios" name="arte > proyectos multidisciplinarios" label="Proyectos multidisciplinarios (integran diversas manifestaciones artísticas) / Multidisciplinary Projects" component={Checkbox} /> } 
                   insetChildren
                 />,
                 <ListItem 
-                  primaryText={ <Field name="social art" label="Arte Social (proyectos artísticos con un enfoque social definido) / Social Art (artistic projects with a defined social focus" component={Checkbox} /> } 
+                  primaryText={ <Field id="arte > arte social" name="arte > arte social" label="Arte Social (proyectos artísticos con un enfoque social definido) / Social Art (artistic projects with a defined social focus" component={Checkbox} /> } 
                   insetChildren
                 />,
                 <ListItem 
-                  primaryText={ <Field name="holistic events" label="Eventos Holisticos, Ferias y Festivales / Holistic Events, Fairs and Festivals" component={Checkbox} /> } 
+                  primaryText={ <Field id="arte > eventos holisticos" name="arte > eventos holisticos" label="Eventos Holisticos, Ferias y Festivales / Holistic Events, Fairs and Festivals" component={Checkbox} /> } 
                   insetChildren
                 />
               ]}
@@ -181,6 +197,7 @@ class LocationNewForm extends Component {
             <ListItem 
               primaryText={
                 <Field
+                  id="economias"
                   name="economias"
                   label="Economías Solidarias / Economies of Solidarity"
                   component={Checkbox}
@@ -189,19 +206,19 @@ class LocationNewForm extends Component {
               primaryTogglesNestedList
               nestedItems={[
                 <ListItem 
-                  primaryText={ <Field name="resource banks" label="Bancos de Recursos – Entidades Financieras Solidarias, Monedas AlterNativas / Resource Banks - Solidarity Financial Institutions, Alternate Currencies" component={Checkbox} /> }
+                  primaryText={ <Field id="economias > bancos de recursos" name="economias > bancos de recursos" label="Bancos de Recursos – Entidades Financieras Solidarias, Monedas AlterNativas / Resource Banks - Solidarity Financial Institutions, Alternate Currencies" component={Checkbox} /> }
                   insetChildren
                 />,
                 <ListItem 
-                  primaryText={ <Field name="solidarity economy networks" label="Redes de Economías Solidarias, mercados, cooperativas, gratiferias, trueque, monedas sociales. / Networks of Solidarity Economies, markets, cooperatives, gratiferias, barter, social currencies." component={Checkbox} /> } 
+                  primaryText={ <Field id="economias > redes de economías solidarias" name="economias > redes de economías solidarias" label="Redes de Economías Solidarias, mercados, cooperativas, gratiferias, trueque, monedas sociales. / Networks of Solidarity Economies, markets, cooperatives, gratiferias, barter, social currencies." component={Checkbox} /> } 
                   insetChildren
                 />,
                 <ListItem 
-                  primaryText={ <Field name="time banks" label="Bancos de tiempo / Time banks" component={Checkbox} /> } 
+                  primaryText={ <Field id="economias > bancos de tiempo" name="economias > bancos de tiempo" label="Bancos de tiempo / Time banks" component={Checkbox} /> } 
                   insetChildren
                 />,
                 <ListItem 
-                  primaryText={ <Field name="stores" label="Tiendas: Alimentos, Medicinas, Salud y Belleza, Ropa y Accesorios, Herramientas, Tecnologia, Deportes, Libros Peliculas y Entretenimiento, Artesanias, Musica, etc / Stores: Food, Medicines, Health and Beauty, Clothing and Accessories, Tools, Technology, Sports, Books, Movies and Entertainment, Crafts, Music, etc." component={Checkbox} /> } 
+                  primaryText={ <Field id="economias > tiendas" name="economias > tiendas" label="Tiendas: Alimentos, Medicinas, Salud y Belleza, Ropa y Accesorios, Herramientas, Tecnologia, Deportes, Libros Peliculas y Entretenimiento, Artesanias, Musica, etc / Stores: Food, Medicines, Health and Beauty, Clothing and Accessories, Tools, Technology, Sports, Books, Movies and Entertainment, Crafts, Music, etc." component={Checkbox} /> } 
                   insetChildren
                 />
               ]}
@@ -210,6 +227,7 @@ class LocationNewForm extends Component {
             <ListItem 
               primaryText={
                 <Field
+                  id="politica"
                   name="politica"
                   label="Gobernanzas Propias e Incidencia Política / Self Governance and Political Advocacy"
                   component={Checkbox}
@@ -218,19 +236,19 @@ class LocationNewForm extends Component {
               primaryTogglesNestedList
               nestedItems={[
                 <ListItem 
-                  primaryText={ <Field name="political actors" label="Actores Políticos. Grupos Personas o Movimientos de Activismo e Incidencia Política. / Political Actors. Groups, People, or Movements of Activism and Political Incidence." component={Checkbox} /> }
+                  primaryText={ <Field id="politica > actores politicos" name="politica > actores politicos" label="Actores Políticos. Grupos Personas o Movimientos de Activismo e Incidencia Política. / Political Actors. Groups, People, or Movements of Activism and Political Incidence." component={Checkbox} /> }
                   insetChildren
                 />,
                 <ListItem 
-                  primaryText={ <Field name="art collectives" label="Colectivos de Arte y Grupos de Intelectuales / Art Collectives and Groups of Intellectuals" component={Checkbox} /> } 
+                  primaryText={ <Field id="politica > colectivos de arte y grupos de intelectuales" name="politica > colectivos de arte y grupos de intelectuales" label="Colectivos de Arte y Grupos de Intelectuales / Art Collectives and Groups of Intellectuals" component={Checkbox} /> } 
                   insetChildren
                 />,
                 <ListItem 
-                  primaryText={ <Field name="earth rights" label="Derechos de la Madre Tierra / Rights of Mother Earth" component={Checkbox} /> } 
+                  primaryText={ <Field id="politica > derechos de la madre tierra" name="politica > derechos de la madre tierra" label="Derechos de la Madre Tierra / Rights of Mother Earth" component={Checkbox} /> } 
                   insetChildren
                 />,
                 <ListItem 
-                  primaryText={ <Field name="legal advice" label="Asesoría legal / Legal advice" component={Checkbox} /> } 
+                  primaryText={ <Field id="politica > asesoría legal" name="politica > Asesoría legal" label="Asesoría legal / Legal advice" component={Checkbox} /> } 
                   insetChildren
                 />
               ]}
@@ -240,6 +258,7 @@ class LocationNewForm extends Component {
             <ListItem 
               primaryText={
                 <Field
+                  id="educacion"
                   name="educacion"
                   label="Comunicación Educación / Communication Education"
                   component={Checkbox}
@@ -248,11 +267,11 @@ class LocationNewForm extends Component {
               primaryTogglesNestedList
               nestedItems={[
                 <ListItem 
-                  primaryText={ <Field name="education institutions" label="Universidades, Academias, Escuelas. Homeschools / Universities, Academies, Schools. Homeschools" component={Checkbox} /> }
+                  primaryText={ <Field id="educacion > instituciones de educacion" name="educacion > instituciones de educacion" label="Universidades, Academias, Escuelas. Homeschools / Universities, Academies, Schools. Homeschools" component={Checkbox} /> }
                   insetChildren
                 />,
                 <ListItem 
-                  primaryText={ <Field name="media" label="Medios de Comunicación / Communication Media" component={Checkbox} /> } 
+                  primaryText={ <Field id="educacion > medios de comunicación" name="educacion > medios de comunicación" label="Medios de Comunicación / Communication Media" component={Checkbox} /> } 
                   insetChildren
                 />
               ]}
@@ -262,6 +281,7 @@ class LocationNewForm extends Component {
             <ListItem 
               primaryText={
                 <Field
+                  id="ecologia"
                   name="ecologia"
                   label="EcoLogia Ambiental, Diseños y Tecnologías / Environmental Ecology, Design and Technology"
                   component={Checkbox}
@@ -270,27 +290,27 @@ class LocationNewForm extends Component {
               primaryTogglesNestedList
               nestedItems={[
                 <ListItem 
-                  primaryText={ <Field name="alternative communities" label="Ecoaldeas y Comunidades AlterNativas / Ecovillages and Alternate Communities" component={Checkbox} /> }
+                  primaryText={ <Field id="ecologia > comunidades alterNativas" name="ecologia > comunidades alterNativas" label="Ecoaldeas y Comunidades AlterNativas / Ecovillages and Alternate Communities" component={Checkbox} /> }
                   insetChildren
                 />,
                 <ListItem 
-                  primaryText={ <Field name="hotels and hostels" label="Hostales, Hoteles / Hostels, Hotels" component={Checkbox} /> } 
+                  primaryText={ <Field id="ecologia > hostales y hoteles" name="ecologia > hostales y hoteles" label="Hostales, Hoteles / Hostels, Hotels" component={Checkbox} /> } 
                   insetChildren
                 />,
                 <ListItem 
-                  primaryText={ <Field name="ecotourism" label="EcoTurismo / Ecotourism" component={Checkbox} /> } 
+                  primaryText={ <Field id="ecologia > EcoTurismo" name="ecologia > EcoTurismo" label="EcoTurismo / Ecotourism" component={Checkbox} /> } 
                   insetChildren
                 />,
                 <ListItem 
-                  primaryText={ <Field name="permaculture" label="Permacultura – Bioconstrucción / Permaculture - Bioconstruction" component={Checkbox} /> } 
+                  primaryText={ <Field id="ecologia > permacultura" name="ecologia > permacultura" label="Permacultura – Bioconstrucción / Permaculture - Bioconstruction" component={Checkbox} /> } 
                   insetChildren
                 />,
                 <ListItem 
-                  primaryText={ <Field name="renewable energy" label="Energías renovables / Renewable energy" component={Checkbox} /> } 
+                  primaryText={ <Field id="ecologia > energías renovables" name="ecologia > energías renovables" label="Energías renovables / Renewable energy" component={Checkbox} /> } 
                   insetChildren
                 />,
                 <ListItem 
-                  primaryText={ <Field name="farming" label="AgriCultura / Farming" component={Checkbox} /> } 
+                  primaryText={ <Field id="ecologia > agriCultura" name="ecologia > agriCultura" label="AgriCultura / Farming" component={Checkbox} /> } 
                   insetChildren
                 />
               ]}
@@ -300,6 +320,7 @@ class LocationNewForm extends Component {
             <ListItem 
               primaryText={
                 <Field
+                  id="espiritualidad"
                   name="espiritualidad"
                   label="Espiritualidad & Realización del Ser / Spirituality and Realization of Self"
                   component={Checkbox}
@@ -308,11 +329,11 @@ class LocationNewForm extends Component {
               primaryTogglesNestedList
               nestedItems={[
                 <ListItem 
-                  primaryText={ <Field name="guides" label="Maestros, Guías, Canalizadores, Acompañantes, Facilitadores Mayores Abuelos, etc / Teachers, Guides, Channelers, Companions, Senior Facilitators, Grandparents, etc." component={Checkbox} /> }
+                  primaryText={ <Field id="espiritualidad > maestros" name="espiritualidad > maestros" label="Maestros, Guías, Canalizadores, Acompañantes, Facilitadores Mayores Abuelos, etc / Teachers, Guides, Channelers, Companions, Senior Facilitators, Grandparents, etc." component={Checkbox} /> }
                   insetChildren
                 />,
                 <ListItem 
-                  primaryText={ <Field name="schools of wisdom" label="Escuelas de Sabiduría e InIciáticas. Tecnologías Ancestrales y de Desarrollo del Ser. / Schools of Wisdom and Initiative. Ancestral Technologies and Development of the Self." component={Checkbox} /> } 
+                  primaryText={ <Field id="espiritualidad > escuelas de sabiduría" name="espiritualidad > escuelas de sabiduría" label="Escuelas de Sabiduría e InIciáticas. Tecnologías Ancestrales y de Desarrollo del Ser. / Schools of Wisdom and Initiative. Ancestral Technologies and Development of the Self." component={Checkbox} /> } 
                   insetChildren
                 />
               ]}
@@ -321,7 +342,8 @@ class LocationNewForm extends Component {
             <ListItem 
               primaryText={
                 <Field
-                  name="networks"
+                  id="redes"
+                  name="redes"
                   label="Redes y Plataformas / Networks and Platforms"
                   component={Checkbox}
                 />
@@ -331,7 +353,8 @@ class LocationNewForm extends Component {
             <ListItem 
               primaryText={
                 <Field
-                  name="persons"
+                  id="personas"
+                  name="personas"
                   label="Personas / Persons"
                   component={Checkbox}
                 />
@@ -339,23 +362,23 @@ class LocationNewForm extends Component {
               primaryTogglesNestedList
               nestedItems={[
                 <ListItem 
-                  primaryText={ <Field name="natural person" label="Naturales (Perfil Social) / Natural (Social Profile)" component={Checkbox} /> }
+                  primaryText={ <Field id="personas > naturales (perfil social)" name="personas > naturales (perfil social)" label="Naturales (Perfil Social) / Natural (Social Profile)" component={Checkbox} /> }
                   insetChildren
                 />,
                 <ListItem 
-                  primaryText={ <Field name="volunteers" label="Voluntarios / Volunteers" component={Checkbox} /> } 
+                  primaryText={ <Field id="personas > voluntarios" name="personas > voluntarios" label="Voluntarios / Volunteers" component={Checkbox} /> } 
                   insetChildren
                 />,
                 <ListItem 
-                  primaryText={ <Field name="commercial service" label="Servicios Comerciales / Commercial Services" component={Checkbox} /> } 
+                  primaryText={ <Field id="personas > servicios comerciales" name="personas > servicios comerciales" label="Servicios Comerciales / Commercial Services" component={Checkbox} /> } 
                   insetChildren
                 />,
                 <ListItem 
-                  primaryText={ <Field name="producers" label="Productores / Producers" component={Checkbox} /> } 
+                  primaryText={ <Field id="personas > productores" name="personas > productores" label="Productores / Producers" component={Checkbox} /> } 
                   insetChildren
                 />,
                 <ListItem 
-                  primaryText={ <Field name="managers" label="Gestores y ProMotores / Managers and ProMotors" component={Checkbox} /> } 
+                  primaryText={ <Field id="personas > gestores y proMotores" name="personas > gestores y proMotores" label="Gestores y ProMotores / Managers and ProMotors" component={Checkbox} /> } 
                   insetChildren
                 />
               ]}
@@ -364,7 +387,8 @@ class LocationNewForm extends Component {
             <ListItem 
               primaryText={
                 <Field
-                  name="events"
+                  id="eventos"
+                  name="eventos"
                   label="Eventos / Events"
                   component={Checkbox}
                 />
@@ -372,23 +396,23 @@ class LocationNewForm extends Component {
               primaryTogglesNestedList
               nestedItems={[
                 <ListItem 
-                  primaryText={ <Field name="tourism" label="Turísticos / Tourist" component={Checkbox} /> }
+                  primaryText={ <Field id="eventos > turísticos" name="eventos > turísticos" label="Turísticos / Tourist" component={Checkbox} /> }
                   insetChildren
                 />,
                 <ListItem 
-                  primaryText={ <Field name="pedagogical" label="Pedagógicos / Pedagogical" component={Checkbox} /> } 
+                  primaryText={ <Field id="eventos > pedagógicos " name="eventos > pedagógicos " label="Pedagógicos / Pedagogical" component={Checkbox} /> } 
                   insetChildren
                 />,
                 <ListItem 
-                  primaryText={ <Field name="cultural" label="Culturales / Cultural" component={Checkbox} /> } 
+                  primaryText={ <Field id="eventos > culturales" name="eventos > culturales" label="Culturales / Cultural" component={Checkbox} /> } 
                   insetChildren
                 />,
                 <ListItem 
-                  primaryText={ <Field name="holistic" label="Holisticos / Holistic" component={Checkbox} /> } 
+                  primaryText={ <Field id="eventos > holisticos" name="eventos > holisticos" label="Holisticos / Holistic" component={Checkbox} /> } 
                   insetChildren
                 />,
                 <ListItem 
-                  primaryText={ <Field name="rituals" label="Rituales / Rituals" component={Checkbox} /> } 
+                  primaryText={ <Field id="eventos > rituales" name="eventos > rituales" label="Rituales / Rituals" component={Checkbox} /> } 
                   insetChildren
                 />
               ]}
@@ -426,7 +450,7 @@ function validate(values) {
 
 function afterSubmit(result, dispatch) {
   // TODO success message goes here
-  window.location.reload();
+  //window.location.reload();
   dispatch(reset('LocationNewForm'));
 }
 

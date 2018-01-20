@@ -11,12 +11,15 @@ class Hit extends Component {
     super(props);
     this.centerMap = this.centerMap.bind(this);
     this.map = this.props.map;
-    this.setCoords(this.props.hit);
   }
 
   centerMap() {
     const hit = this.props.hit;
     this.map.setCenter(hit.coordinates);
+  }
+
+  componentDidMount() {
+    this.setCoords(this.props.hit);
   }
 
   componentWillUnmount() {

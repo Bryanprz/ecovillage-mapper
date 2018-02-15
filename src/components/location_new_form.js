@@ -15,8 +15,8 @@ import {List, ListItem} from 'material-ui/List';
 class LocationNewForm extends Component {
   // callback that runs if handleSubmit (redux form prop) validates
   onSubmit(values) {
-    const category0 = 'categoriesLvl0'; // Required format for Algolia HierarchicalMenu
-    const category1 = 'categoriesLvl1'; // ''
+    const category0 = 'lvl01'; // Required format for Algolia HierarchicalMenu
+    const category1 = 'lvl02'; // ''
     values[category0] = [];
     values[category1] = [];
 
@@ -95,6 +95,7 @@ class LocationNewForm extends Component {
           <List>
 
             <ListItem 
+              key="salud"
               primaryText={
                 <Field
                   name="salud"
@@ -106,30 +107,37 @@ class LocationNewForm extends Component {
               primaryTogglesNestedList
               nestedItems={[
                 <ListItem 
+                  key="salud > nutrición"
                   primaryText={ <Field id="salud > nutrición" name="salud > nutrición" label="Nutrición & Alimentación / Nutrition" component={Checkbox} /> }
                   insetChildren
                 />,
                 <ListItem 
+                  key="salud > medicina alterNativa"
                   primaryText={ <Field id="salud > medicina alterNativa" name="salud > medicina alterNativa" label="Medicina AlterNativa / Alternative Medicine" component={Checkbox} /> } 
                   insetChildren
                 />,
                 <ListItem 
+                  key="salud > terapias alternativas"
                   primaryText={ <Field id="salud > terapias alternativas" name="salud > terapias alternativas" label="Terapias Alternativas – Terapeutas / Alternative Therapy" component={Checkbox} /> } 
                   insetChildren
                 />,
                 <ListItem 
+                  key="salud > medicinas"
                   primaryText={ <Field id="salud > medicinas: plantas y minerales" name="salud > medicinas: plantas y minerales" label="Medicinas: Plantas y Minerales / Medicines: Plants and Minerals" component={Checkbox} /> } 
                   insetChildren
                 />,
                 <ListItem 
+                  key="salud > parto natural"
                   primaryText={ <Field id="salud > parto natural y muerte consciente" name="salud > parto natural y muerte consciente" label="Parto Natural y Muerte Consciente / Natural Birth and Conscious Death" component={Checkbox} /> } 
                   insetChildren
                 />,
                 <ListItem 
+                  key="salud > escuelas"
                   primaryText={ <Field id="salud > escuelas y academias" name="salud > escuelas y academias" label="Escuelas y Academias (yoga, reiki, masajes, etc) / Schools and Academies ( yoga, reiki, massage, etc)" component={Checkbox} /> } 
                   insetChildren
                 />,
                 <ListItem 
+                  key="salud > centros holisticos"
                   primaryText={ <Field id="salud > centros holisticos" name="salud > centros holisticos" label="Centros Holisticos / Holistic Centers" component={Checkbox} /> } 
                   insetChildren
                 />
@@ -450,7 +458,7 @@ function validate(values) {
 
 function afterSubmit(result, dispatch) {
   // TODO success message goes here
-  //window.location.reload();
+  window.location.reload();
   dispatch(reset('LocationNewForm'));
 }
 

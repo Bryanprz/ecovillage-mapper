@@ -29,12 +29,7 @@ const MySearchBox = ({ currentRefinement, refine }) => {
           hintText="Ejemplo: Voluntarios, eco-aldea, Colombia"
           onChange={e => refine(e.target.value)}
         />
-        <HierarchicalMenu attributes={['categories0']} id='categories0' key='categories0' />
-        <div className="refinements">
-          <HierarchicalMenu 
-            attributes={['categoriesLvl0', 'categoriesLvl1']}
-          />
-        </div>
+        <HierarchicalMenu attributes={['lvl01', 'lvl02']} id='categories' key='categories' />
       </div>
       <div>
         <Content />

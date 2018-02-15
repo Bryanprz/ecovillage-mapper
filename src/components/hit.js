@@ -44,7 +44,8 @@ class Hit extends Component {
       } catch (e) {
         console.error('Error occurred when getting address for ' + location.name + ': ', e);
         this.showErrorMessage(`Dirección no encontrada para ${location.address}`);
-        this.props.deleteLocation(location.key);
+        console.log('location key: ', location.key);
+        if (location.key) { this.props.deleteLocation(location.key) };
       }
     });
   }

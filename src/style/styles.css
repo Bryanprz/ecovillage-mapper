@@ -23,6 +23,7 @@
 .sidebar {
   border-right: 1px solid #d3d3d3;
   max-height: 100vh;
+  max-width: 30%;
   min-height: 100vh;
   overflow: scroll;
 }

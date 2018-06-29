@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Field, reduxForm, reset } from 'redux-form';
 import { connect } from 'react-redux';
 import { addLocation } from '../actions';
-
+ 
 // ===== STYLES =====
 import '../style/location_new.css';
 import '../style/styles.css';

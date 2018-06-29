@@ -3,7 +3,7 @@ import TextField from 'material-ui/TextField';
 import Subheader from 'material-ui/Subheader';
 import Hit from './hit';
 import '../style/styles.css';
-import { HierarchicalMenu, RefinementList, Hits } from 'react-instantsearch/dom';
+import { Breadcrumb, HierarchicalMenu, RefinementList, Hits } from 'react-instantsearch/dom';
 import { connectSearchBox } from 'react-instantsearch/connectors';
 
 const Content = () => {
@@ -29,7 +29,7 @@ const MySearchBox = ({ currentRefinement, refine }) => {
           hintText="Ejemplo: Voluntarios, eco-aldea, Colombia"
           onChange={e => refine(e.target.value)}
         />
-        <HierarchicalMenu attributes={['lvl01', 'lvl02']} id='categories' key='categories' />
+        <Breadcrumb attributes={['lvl01', 'lvl02']} id='categories' key='categories' />
       </div>
       <div>
         <Content />

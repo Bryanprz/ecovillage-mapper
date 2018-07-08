@@ -11,6 +11,9 @@ const Content = () => {
     <div>
       <span className="subtitle">
         <Subheader>Resultados</Subheader>
+        <HierarchicalMenu 
+          attributes={['lvl01', 'lvl02']}
+        />
       </span>
       <Hits hitComponent={Hit}/>
     </div>
@@ -29,7 +32,6 @@ const MySearchBox = ({ currentRefinement, refine }) => {
           hintText="Ejemplo: Voluntarios, eco-aldea, Colombia"
           onChange={e => refine(e.target.value)}
         />
-        <Breadcrumb attributes={['lvl01', 'lvl02']} id='categories' key='categories' />
       </div>
       <div>
         <Content />

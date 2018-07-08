@@ -55,9 +55,15 @@
   left: 3px;
 }
 
-.ais-RefinementList__root {
-  font-family: "Roboto";
-  font-size: 90%;
+.ais-HierarchicalMenu__items {
+  font-family: "Roboto" !important;
+  margin-left: 20px;
+  padding-bottom: 25px;
+  text-transform: capitalize;
+}
+
+.ais-HierarchicalMenu__itemLink {
+  font-size: 110% !important;
 }
 
 .tab {

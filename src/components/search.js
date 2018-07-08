@@ -3,7 +3,7 @@ import TextField from 'material-ui/TextField';
 import Subheader from 'material-ui/Subheader';
 import Hit from './hit';
 import '../style/styles.css';
-import { Breadcrumb, HierarchicalMenu, RefinementList, Hits } from 'react-instantsearch/dom';
+import { HierarchicalMenu, Hits } from 'react-instantsearch/dom';
 import { connectSearchBox } from 'react-instantsearch/connectors';
 
 const Content = () => {

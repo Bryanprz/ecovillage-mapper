@@ -37,7 +37,7 @@ class LocationNewForm extends Component {
         }
       }
     }
-    console.log('values: ', values);
+
     this.props.addLocation(values); 
   }
 
@@ -458,8 +458,8 @@ function validate(values) {
 
 function afterSubmit(result, dispatch) {
   // TODO success message goes here
-  window.location.reload();
   dispatch(reset('LocationNewForm'));
+  window.location.reload();
 }
 
 export default reduxForm({

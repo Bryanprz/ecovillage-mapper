@@ -20,6 +20,7 @@ class Hit extends Component {
   }
 
   componentDidMount() {
+    console.log('hi bryan');
     this.setCoords(this.props.hit);
   }
 

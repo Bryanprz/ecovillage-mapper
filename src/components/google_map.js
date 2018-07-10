@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 import { saveMap } from '../actions';
 import '../style/google_map.css';
 
-export const MAP_ROOT_URL = `https://maps.googleapis.com/maps/api/geocode/json`;
-
 class GoogleMap extends Component {
   initMap() {
     var lat = parseFloat(this.props.lat);

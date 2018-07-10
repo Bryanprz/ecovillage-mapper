@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { connectHighlight } from 'react-instantsearch/connectors';
 import Divider from 'material-ui/Divider';
-import { MAP_ROOT_URL } from './google_map';
 import axios from 'axios';
 import { deleteLocation } from '../actions';
+
+const MAP_ROOT_URL = `https://maps.googleapis.com/maps/api/geocode/json`;
 
 class Hit extends Component {
   constructor(props) {
@@ -34,7 +35,9 @@ class Hit extends Component {
   }
 
   setCoords(location) {
-    const url = `${MAP_ROOT_URL}?address=${location.address}`;
+    var address = location.address;
+    address = address.replace(/,/g, '').replace(/\./g, '').replace(/#/g, '').split(' ').join('+');
+    const url = `${MAP_ROOT_URL}?address=${address}`;
     const request = axios.get(url);
 
     request.then( result => {

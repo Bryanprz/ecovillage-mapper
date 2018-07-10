@@ -29,5 +29,8 @@
     "eject": "react-scripts eject",
     "deploy": "firebase deploy"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "eslint": "^5.1.0",
+    "eslint-config-google": "^0.9.1"
+  }
 }

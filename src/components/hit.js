@@ -11,6 +11,7 @@ class Hit extends Component {
   constructor(props) {
     super(props);
     this.centerMap = this.centerMap.bind(this);
+    this.setCoords = this.setCoords.bind(this);
     this.map = this.props.map;
   }
 
@@ -20,7 +21,6 @@ class Hit extends Component {
   }
 
   componentDidMount() {
-    console.log('hi bryan');
     this.setCoords(this.props.hit);
   }
 

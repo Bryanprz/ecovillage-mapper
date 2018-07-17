@@ -9,7 +9,8 @@ import '../style/styles.css';
 
 // ===== MATERIAL UI =====
 import RaisedButton from 'material-ui/RaisedButton';
-import { TextField, Checkbox } from 'redux-form-material-ui';
+import { SelectField, TextField, Checkbox } from 'redux-form-material-ui';
+import MenuItem from 'material-ui/MenuItem'
 import {List, ListItem} from 'material-ui/List';
 
 class LocationNewForm extends Component {
@@ -56,7 +57,7 @@ class LocationNewForm extends Component {
           <div className="form-input">
             <Field
               name="name"
-              hintText="* Nombre Completo de la Persona, Proyecto Lugar u Organizacion / Full Name of Person, Project Location or Organization"
+              hintText="* Nombre Completo de la Persona, Proyecto Lugar, Iniciativa u Organizacion / Full Name of Person, Project Location or Organization"
               component={TextField}
               fullWidth={true}
             />
@@ -64,7 +65,25 @@ class LocationNewForm extends Component {
           <div className="form-input">
             <Field
               name="address"
-              hintText="* Pais, Estado, Ciudad, Direccion (opcionales pero recomendadas) / Country, State, City, Address (optional but recommended)"
+              hintText="* Ubicacion: Pais, Estado, Ciudad, Direccion (opcionales pero recomendadas) / Country, State, City, Address (optional but recommended)"
+              type="text"
+              component={TextField}
+              fullWidth={true}
+            />
+          </div>
+          <div className="form-input">
+            <Field
+              name="contact"
+              hintText="Contacto Directo: (Dirección de Correo y/o Tcel/WhatsApp) / Direct Contact: (Email Address or cell phone/Whatsapp)"
+              type="text"
+              component={TextField}
+              fullWidth={true}
+            />
+          </div>
+          <div className="form-input">
+            <Field
+              name="website"
+              hintText="Páginas, Redes, Datos de Contacto e Info en Generall, (Pagina Web, FB, Instagram, Twitter, Etc etc)"
               type="text"
               component={TextField}
               fullWidth={true}
@@ -73,7 +92,7 @@ class LocationNewForm extends Component {
           <div className="form-input">
             <Field
               name="offering"
-              hintText="Que Ofrece? / What is being offered?"
+              hintText="Que Hace? Que Ofrece? Puntualmente.Ej: Información, Productos, Servicios, Eventos Culturales,Trabajo,Voluntariado,Tiempo, Algún Recurso para Compartir o Regalar? etc"
               type="text"
               component={TextField}
               fullWidth={true}
@@ -82,11 +101,38 @@ class LocationNewForm extends Component {
           <div className="form-input">
             <Field
               name="seeking"
-              hintText="Que Necesita? / What are you looking for?"
+              hintText="Que Necesita? (que le hace falta o está buscando?) Ej: Trabajo, Aliad@s, Amig@s. CoLaboradores, Voluntarios, Patrocinadores, Clientes, Informacion, Tierra Compartida etc"
               type="text"
               component={TextField}
               fullWidth={true}
             />
+          </div>
+          <div className="form-input">
+            <Field
+              name="observaciones"
+              hintText="Observaciones Generales (Descripciones Específicas de lo Anterior Ofrecido o  Buscando, Horarios, Fechas, Años, Recomendaciones Etc)"
+              type="text"
+              component={TextField}
+              fullWidth={true}
+            />
+          </div>
+          <div className="form-input">
+            <Field
+              name="existing-networks"
+              hintText="Haces parte de alguna de estas Redes?"
+              type="text"
+              component={SelectField}
+              fullWidth={true}
+            >
+              <MenuItem value="gaia-union" primaryText="Gaia (Unión)" />
+              <MenuItem value="mais-aro-iris" primaryText="Mais Aro-Iris" />
+              <MenuItem value="spirall" primaryText="Spirall (EcoLab)" />
+              <MenuItem value="gaiarte" primaryText="GaiArte (Red de Arte y Cultura)" />
+              <MenuItem value="permaculture" primaryText="Permaculture Network" />
+              <MenuItem value="transicion" primaryText="Transicion Network" />
+              <MenuItem value="gen" primaryText="GEN / CASA" />
+              <MenuItem value="otra-red" primaryText="Otra: Cual? (Puedes señalar algún Movimiento, Tradición, Religión, Corriente o cualquier cosa de la que te sientas parte)" />
+            </Field>
           </div>
           <div>
             <small>* Required</small>

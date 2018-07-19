@@ -140,333 +140,590 @@ class LocationNewForm extends Component {
 
           <List>
 
-            <ListItem 
-              key="salud"
+            <ListItem
+              key="organizaciones"
+              primaryTogglesNestedList
               primaryText={
                 <Field
-                  name="salud"
-                  label="Salud y Bienestar / Health and Wellbeing"
+                  name="organizaciones"
+                  label="Organizaciones, Proyectos, Iniciativas (Empresas, Emprendimientos & Grupos en General) o Blogs, Revistas, Editoriales en General que Brindan Información acerca de:"
                   component={Checkbox}
-                  id="salud"
+                  id="organizaciones"
                 />
-              } 
-              primaryTogglesNestedList
+              }
               nestedItems={[
                 <ListItem 
-                  key="salud > nutrición"
-                  primaryText={ <Field id="salud > nutrición" name="salud > nutrición" label="Nutrición & Alimentación / Nutrition" component={Checkbox} /> }
-                  insetChildren
+                  key="salud"
+                  primaryText={
+                    <Field
+                      name="salud"
+                      label="Salud y Bienestar / Health and Wellbeing"
+                      component={Checkbox}
+                      id="salud"
+                    />
+                  } 
+                  primaryTogglesNestedList
+                  nestedItems={[
+                    <ListItem 
+                        key="salud > nutrición"
+                        primaryText={ <Field id="salud > nutrición" name="salud > nutrición" label="Nutrición & Alimentación / Nutrition" component={Checkbox} /> }
+                        insetChildren
+                      />,
+                    <ListItem 
+                      key="salud > medicina alterNativa"
+                      primaryText={ <Field id="salud > medicina alterNativa" name="salud > medicina alterNativa" label="Medicina AlterNativa / Alternative Medicine" component={Checkbox} /> } 
+                      insetChildren
+                    />,
+                    <ListItem 
+                      key="salud > terapias alternativas"
+                      primaryText={ <Field id="salud > terapias alternativas" name="salud > terapias alternativas" label="Terapias Alternativas – Terapeutas / Alternative Therapy" component={Checkbox} /> } 
+                      insetChildren
+                    />,
+                    <ListItem 
+                      key="salud > medicinas"
+                      primaryText={ <Field id="salud > medicinas: plantas y minerales" name="salud > medicinas: plantas y minerales" label="Medicinas: Plantas y Minerales / Medicines: Plants and Minerals" component={Checkbox} /> } 
+                      insetChildren
+                    />,
+                    <ListItem 
+                      key="salud > parto natural"
+                      primaryText={ <Field id="salud > parto natural y muerte consciente" name="salud > parto natural y muerte consciente" label="Parto Natural y Muerte Consciente / Natural Birth and Conscious Death" component={Checkbox} /> } 
+                      insetChildren
+                    />,
+                    <ListItem 
+                      key="salud > escuelas"
+                      primaryText={ <Field id="salud > escuelas y academias" name="salud > escuelas y academias" label="Escuelas y Academias (yoga, reiki, masajes, etc) / Schools and Academies ( yoga, reiki, massage, etc)" component={Checkbox} /> } 
+                      insetChildren
+                    />,
+                    <ListItem 
+                      key="salud > centros holisticos"
+                      primaryText={ <Field id="salud > centros holisticos" name="salud > centros holisticos" label="Centros Holisticos / Holistic Centers" component={Checkbox} /> } 
+                      insetChildren
+                    />
+                  ]}
                 />,
                 <ListItem 
-                  key="salud > medicina alterNativa"
-                  primaryText={ <Field id="salud > medicina alterNativa" name="salud > medicina alterNativa" label="Medicina AlterNativa / Alternative Medicine" component={Checkbox} /> } 
-                  insetChildren
+                  primaryText={
+                    <Field
+                      id="arte"
+                      name="arte"
+                      label="Arte y Cultura / Art and Culture"
+                      component={Checkbox}
+                    />
+                  } 
+                  primaryTogglesNestedList
+                  nestedItems={[
+                    <ListItem 
+                      primaryText={ <Field id="arte > musica" name="arte > musica" label="Música & Sonido / Music & Sound" component={Checkbox} /> }
+                      insetChildren
+                    />,
+                    <ListItem 
+                      primaryText={ <Field id="arte > baile" name="arte > baile" label="Baile, Danza & Movimiento" component={Checkbox} /> }
+                      insetChildren
+                    />,
+                    <ListItem 
+                      primaryText={ <Field id="arte > arte plastico" name="arte > arte plastico " label="Arte Visual y Artes Plásticas (Dibujo, Graffiti, Fotografia, Arte Digital etc)" component={Checkbox} /> } 
+                      insetChildren
+                    />,
+                    <ListItem 
+                      primaryText={ <Field id="arte > arte escénico" name="arte > arte escénico" label="Arte escénico (danza, teatro, performance) / Stage art (dance, theater, performance)" component={Checkbox} /> } 
+                      insetChildren
+                    />,
+                    <ListItem 
+                      primaryText={ <Field id="arte > arte literario" name="arte > arte literario" label="Arte Literario, Cuentos, Poesia, etc" component={Checkbox} /> } 
+                      insetChildren
+                    />,
+                    <ListItem 
+                      primaryText={ <Field id="arte > producción audivisual" name="arte > producción audivisual" label="Cine & Producción Audiovisual / Audiovisual Production" component={Checkbox} /> } 
+                      insetChildren
+                    />,
+                    <ListItem 
+                      primaryText={ <Field id="arte > circo y entretenimiento" name="arte > circo y entretenimiento" label="Circo y Entretenimiento / Circus and Entertainment" component={Checkbox} /> } 
+                      insetChildren
+                    />,
+                    <ListItem 
+                      primaryText={ <Field id="arte > casas culturales" name="arte > casas culturales" label="Casas Culturales / Cultural Houses" component={Checkbox} /> } 
+                      insetChildren
+                    />,
+                    <ListItem 
+                      primaryText={ <Field id="arte > teatros y cines" name="arte > teatros y cines" label="Teatros y Cines / Theater and Movies" component={Checkbox} /> } 
+                      insetChildren
+                    />,
+                    <ListItem 
+                      primaryText={ <Field id="arte > lugares de conciertos" name="arte > lugares de conciertos" label="Lugares de Conciertos o Presentaciones Culturales (Auditorios,Salas, Cafés, Bars, etc)" component={Checkbox} /> } 
+                      insetChildren
+                    />,
+                    <ListItem 
+                      primaryText={ <Field id="arte > proyectos multidisciplinarios" name="arte > proyectos multidisciplinarios" label="Proyectos multidisciplinarios (integran diversas manifestaciones artísticas) / Multidisciplinary Projects" component={Checkbox} /> } 
+                      insetChildren
+                    />,
+                    <ListItem 
+                      primaryText={ <Field id="arte > arte social" name="arte > arte social" label="Arte Social (proyectos artísticos con un enfoque social definido) / Social Art (artistic projects with a defined social focus" component={Checkbox} /> } 
+                      insetChildren
+                    />,
+                    <ListItem 
+                      primaryText={ <Field id="arte > eventos holisticos" name="arte > eventos holisticos" label="Organización de Eventos Holísticos; Ferias y Festivales etc" component={Checkbox} /> } 
+                      insetChildren
+                    />
+                  ]}
                 />,
                 <ListItem 
-                  key="salud > terapias alternativas"
-                  primaryText={ <Field id="salud > terapias alternativas" name="salud > terapias alternativas" label="Terapias Alternativas – Terapeutas / Alternative Therapy" component={Checkbox} /> } 
-                  insetChildren
+                  primaryText={
+                    <Field
+                      id="economias"
+                      name="economias"
+                      label="Economías Solidarias / Economies of Solidarity"
+                      component={Checkbox}
+                    />
+                  } 
+                  primaryTogglesNestedList
+                  nestedItems={[
+                    <ListItem 
+                      primaryText={ <Field id="economias > bancos de recursos" name="economias > bancos de recursos" label="Bancos de Recursos. Economía de Regalo e InterCambio, Bancos de Tiempo" component={Checkbox} /> }
+                      insetChildren
+                    />,
+                    <ListItem 
+                      primaryText={ <Field id="economias > cooperativas de produccion" name="economias > cooperativas de produccion" label="Cooperativas de Producción, CompraVenta y/o Consumo." component={Checkbox} /> } 
+                      insetChildren
+                    />,
+                    <ListItem 
+                      primaryText={ <Field id="economias > entidades financieras" name="economias > entidades financieras" label="Entidades Financieras Solidarias, Crédito & Ahorro." component={Checkbox} /> } 
+                      insetChildren
+                    />,
+                    <ListItem 
+                      primaryText={ <Field id="economias > monedas alternativas" name="economias > monedas alternativas" label="Monedas AlterNativas / Sociales / Locales" component={Checkbox} /> } 
+                      insetChildren
+                    />,
+                    <ListItem 
+                      primaryText={ <Field id="economias > tiendas" name="economias > tiendas" label="Tiendas, Ferias, Mercados, Trueque, GratiFerias." component={Checkbox} /> } 
+                      insetChildren
+                    />,
+                    <ListItem 
+                      primaryText={ <Field id="economias > tiendas online" name="economias > tiendas online" label="Tiendas Online (Ecommerce)" component={Checkbox} /> } 
+                      insetChildren
+                    />
+                  ]}
                 />,
                 <ListItem 
-                  key="salud > medicinas"
-                  primaryText={ <Field id="salud > medicinas: plantas y minerales" name="salud > medicinas: plantas y minerales" label="Medicinas: Plantas y Minerales / Medicines: Plants and Minerals" component={Checkbox} /> } 
-                  insetChildren
+                  primaryText={
+                    <Field
+                      id="plataformas"
+                      name="plataformas"
+                      label="PlataFormas de Incidencia Polític@ / Institucional"
+                      component={Checkbox}
+                    />
+                  } 
+                  primaryTogglesNestedList
+                  nestedItems={[
+                    <ListItem 
+                      primaryText={ <Field id="plataformas > derechos ambientales" name="plataformas > derechos ambientales" label="Derechos Socio/Ambientales de la Madre Tierra / Naturaleza. (Gaia)" component={Checkbox} /> }
+                      insetChildren
+                    />,
+                    <ListItem 
+                      primaryText={ <Field id="plataformas > actores politicos" name="plataformas > actores politicos" label="Actores Políticos o Grupos de Incidencia Política. (Derechos Humanos)" component={Checkbox} /> } 
+                      insetChildren
+                    />,
+                    <ListItem 
+                      primaryText={ <Field id="plataformas > colectivos de arte" name="plataformas > colectivos de arte" label="Colectivos de Arte y Grupos de Intelectuales, Académicos y/o Científicos" component={Checkbox} /> } 
+                      insetChildren
+                    />,
+                    <ListItem 
+                      primaryText={ <Field id="plataformas > asesoria legal" name="plataformas > asesoria legal" label="Asesoría Legal y Jurídica" component={Checkbox} /> } 
+                      insetChildren
+                    />,
+                    <ListItem 
+                      primaryText={ <Field id="plataformas > liderazgo" name="plataformas > liderazgo" label="Liderazgo y Facilitación social (métodos, tecnologías, herramientas sociales, etc)" component={Checkbox} /> } 
+                      insetChildren
+                    />
+                  ]}
                 />,
                 <ListItem 
-                  key="salud > parto natural"
-                  primaryText={ <Field id="salud > parto natural y muerte consciente" name="salud > parto natural y muerte consciente" label="Parto Natural y Muerte Consciente / Natural Birth and Conscious Death" component={Checkbox} /> } 
-                  insetChildren
+                  primaryText={
+                    <Field
+                      id="educacion"
+                      name="educacion"
+                      label="Comunicación Educación / Communication Education"
+                      component={Checkbox}
+                    />
+                  } 
+                  primaryTogglesNestedList
+                  nestedItems={[
+                    <ListItem 
+                      primaryText={ <Field id="educacion > pedagogias" name="educacion > pedagogias" label="Pedagogias & Educacion" component={Checkbox} /> }
+                      insetChildren
+                    />,
+                    <ListItem 
+                      primaryText={ <Field id="educacion > plataformas" name="educacion > plataformas" label="Plataformas & Medios de Comunicación" component={Checkbox} /> } 
+                      insetChildren
+                    />,
+                    <ListItem 
+                      primaryText={ <Field id="educacion > agencias de marketing" name="educacion > agencias de marketing" label="Agencias de Marketing & Comunicaciones" component={Checkbox} /> } 
+                      insetChildren
+                    />
+                  ]}
                 />,
                 <ListItem 
-                  key="salud > escuelas"
-                  primaryText={ <Field id="salud > escuelas y academias" name="salud > escuelas y academias" label="Escuelas y Academias (yoga, reiki, masajes, etc) / Schools and Academies ( yoga, reiki, massage, etc)" component={Checkbox} /> } 
-                  insetChildren
+                  primaryText={
+                    <Field
+                      id="ecologia"
+                      name="ecologia"
+                      label="EcoLogía Ambiental, EcoTurismo, Diseños y Tecnología"
+                      component={Checkbox}
+                    />
+                  } 
+                  primaryTogglesNestedList
+                  nestedItems={[
+                    <ListItem 
+                      primaryText={ <Field id="ecologia > hospedaje" name="ecologia > hospedaje" label="Eco - Hospedaje, Hostales, Hoteles" component={Checkbox} /> }
+                      insetChildren
+                    />,
+                    <ListItem 
+                      primaryText={ <Field id="ecologia > ecoaldeas" name="ecologia > ecoaldeas" label="EcoAldeas & Asentamientos Sustentables" component={Checkbox} /> } 
+                      insetChildren
+                    />,
+                    <ListItem 
+                      primaryText={ <Field id="ecologia > herramientas" name="ecologia > herramientas" label="Herramientas & Tecnológias" component={Checkbox} /> } 
+                      insetChildren
+                    />,
+                    <ListItem 
+                      primaryText={ <Field id="ecologia > sistemas ecologicos" name="ecologia > sistemas ecologicos" label="Sistemas EcoLógicos (PermaCulturas: Bioconstrucción, Energías renovables etc)" component={Checkbox} /> } 
+                      insetChildren
+                    />
+                  ]}
                 />,
                 <ListItem 
-                  key="salud > centros holisticos"
-                  primaryText={ <Field id="salud > centros holisticos" name="salud > centros holisticos" label="Centros Holisticos / Holistic Centers" component={Checkbox} /> } 
-                  insetChildren
+                  primaryText={
+                    <Field
+                      id="espiritualidad"
+                      name="espiritualidad"
+                      label="Espiritualidad & Realización del Ser / Spirituality and Realization of Self"
+                      component={Checkbox}
+                    />
+                  } 
+                  primaryTogglesNestedList
+                  nestedItems={[
+                    <ListItem 
+                      primaryText={ <Field id="espiritualidad > maestros" name="espiritualidad > maestros" label="Maestros, Guías, Canalizadores, Acompañantes, Facilitadores Mayores Abuelos, etc / Teachers, Guides, Channelers, Companions, Senior Facilitators, Grandparents, etc." component={Checkbox} /> }
+                      insetChildren
+                    />,
+                    <ListItem 
+                      primaryText={ <Field id="espiritualidad > escuelas de sabiduría" name="espiritualidad > escuelas de sabiduría" label="Escuelas de Sabiduría e InIciáticas. Tecnologías Ancestrales y de Desarrollo del Ser. / Schools of Wisdom and Initiative. Ancestral Technologies and Development of the Self." component={Checkbox} /> } 
+                      insetChildren
+                    />,
+                    <ListItem 
+                      primaryText={ <Field id="espiritualidad > editoriales" name="espiritualidad > editoriales" label="Editoriales, Blogs, Revistas, Canales, Portales, etc" component={Checkbox} /> } 
+                      insetChildren
+                    />
+                  ]}
+                />,
+                <ListItem 
+                  primaryText={
+                    <Field
+                      id="holisticas"
+                      name="holisticas"
+                      label="Holisticas, Integrales"
+                      component={Checkbox}
+                    />
+                  } 
+                  primaryTogglesNestedList
                 />
               ]}
-            />
-
-            <ListItem 
-              primaryText={
-                <Field
-                  id="arte"
-                  name="arte"
-                  label="Arte y Cultura / Art and Culture"
-                  component={Checkbox}
-                />
-              } 
-              primaryTogglesNestedList
-              nestedItems={[
-                <ListItem 
-                  primaryText={ <Field id="arte > musica" name="arte > musica" label="Música / Music" component={Checkbox} /> }
-                  insetChildren
-                />,
-                <ListItem 
-                  primaryText={ <Field id="arte > arte plastico" name="arte > arte plastico " label="Arte plástico / Plastic art" component={Checkbox} /> } 
-                  insetChildren
-                />,
-                <ListItem 
-                  primaryText={ <Field id="arte > arte escénico" name="arte > arte escénico" label="Arte escénico (danza, teatro, performance) / Stage art (dance, theater, performance)" component={Checkbox} /> } 
-                  insetChildren
-                />,
-                <ListItem 
-                  primaryText={ <Field id="arte > producción audivisual" name="arte > producción audivisual" label="Producción Audiovisual / Audiovisual Production" component={Checkbox} /> } 
-                  insetChildren
-                />,
-                <ListItem 
-                  primaryText={ <Field id="arte > circo y entretenimiento" name="arte > circo y entretenimiento" label="Circo y Entretenimiento / Circus and Entertainment" component={Checkbox} /> } 
-                  insetChildren
-                />,
-                <ListItem 
-                  primaryText={ <Field id="arte > casas culturales" name="arte > casas culturales" label="Casas Culturales / Cultural Houses" component={Checkbox} /> } 
-                  insetChildren
-                />,
-                <ListItem 
-                  primaryText={ <Field id="arte > teatros y cines" name="arte > teatros y cines" label="Teatros y Cines / Theater and Movies" component={Checkbox} /> } 
-                  insetChildren
-                />,
-                <ListItem 
-                  primaryText={ <Field id="arte > restaurantes, cafés y bares" name="arte > restaurantes, cafés y bares" label="Restaurantes, Cafés y Bares / Restaurants, Cafés and Bars" component={Checkbox} /> } 
-                  insetChildren
-                />,
-                <ListItem 
-                  primaryText={ <Field id="arte > proyectos multidisciplinarios" name="arte > proyectos multidisciplinarios" label="Proyectos multidisciplinarios (integran diversas manifestaciones artísticas) / Multidisciplinary Projects" component={Checkbox} /> } 
-                  insetChildren
-                />,
-                <ListItem 
-                  primaryText={ <Field id="arte > arte social" name="arte > arte social" label="Arte Social (proyectos artísticos con un enfoque social definido) / Social Art (artistic projects with a defined social focus" component={Checkbox} /> } 
-                  insetChildren
-                />,
-                <ListItem 
-                  primaryText={ <Field id="arte > eventos holisticos" name="arte > eventos holisticos" label="Eventos Holisticos, Ferias y Festivales / Holistic Events, Fairs and Festivals" component={Checkbox} /> } 
-                  insetChildren
-                />
-              ]}
-            />
-
-            <ListItem 
-              primaryText={
-                <Field
-                  id="economias"
-                  name="economias"
-                  label="Economías Solidarias / Economies of Solidarity"
-                  component={Checkbox}
-                />
-              } 
-              primaryTogglesNestedList
-              nestedItems={[
-                <ListItem 
-                  primaryText={ <Field id="economias > bancos de recursos" name="economias > bancos de recursos" label="Bancos de Recursos – Entidades Financieras Solidarias, Monedas AlterNativas / Resource Banks - Solidarity Financial Institutions, Alternate Currencies" component={Checkbox} /> }
-                  insetChildren
-                />,
-                <ListItem 
-                  primaryText={ <Field id="economias > redes de economías solidarias" name="economias > redes de economías solidarias" label="Redes de Economías Solidarias, mercados, cooperativas, gratiferias, trueque, monedas sociales. / Networks of Solidarity Economies, markets, cooperatives, gratiferias, barter, social currencies." component={Checkbox} /> } 
-                  insetChildren
-                />,
-                <ListItem 
-                  primaryText={ <Field id="economias > bancos de tiempo" name="economias > bancos de tiempo" label="Bancos de tiempo / Time banks" component={Checkbox} /> } 
-                  insetChildren
-                />,
-                <ListItem 
-                  primaryText={ <Field id="economias > tiendas" name="economias > tiendas" label="Tiendas: Alimentos, Medicinas, Salud y Belleza, Ropa y Accesorios, Herramientas, Tecnologia, Deportes, Libros Peliculas y Entretenimiento, Artesanias, Musica, etc / Stores: Food, Medicines, Health and Beauty, Clothing and Accessories, Tools, Technology, Sports, Books, Movies and Entertainment, Crafts, Music, etc." component={Checkbox} /> } 
-                  insetChildren
-                />
-              ]}
-            />
-
-            <ListItem 
-              primaryText={
-                <Field
-                  id="politica"
-                  name="politica"
-                  label="Gobernanzas Propias e Incidencia Política / Self Governance and Political Advocacy"
-                  component={Checkbox}
-                />
-              } 
-              primaryTogglesNestedList
-              nestedItems={[
-                <ListItem 
-                  primaryText={ <Field id="politica > actores politicos" name="politica > actores politicos" label="Actores Políticos. Grupos Personas o Movimientos de Activismo e Incidencia Política. / Political Actors. Groups, People, or Movements of Activism and Political Incidence." component={Checkbox} /> }
-                  insetChildren
-                />,
-                <ListItem 
-                  primaryText={ <Field id="politica > colectivos de arte y grupos de intelectuales" name="politica > colectivos de arte y grupos de intelectuales" label="Colectivos de Arte y Grupos de Intelectuales / Art Collectives and Groups of Intellectuals" component={Checkbox} /> } 
-                  insetChildren
-                />,
-                <ListItem 
-                  primaryText={ <Field id="politica > derechos de la madre tierra" name="politica > derechos de la madre tierra" label="Derechos de la Madre Tierra / Rights of Mother Earth" component={Checkbox} /> } 
-                  insetChildren
-                />,
-                <ListItem 
-                  primaryText={ <Field id="politica > asesoría legal" name="politica > Asesoría legal" label="Asesoría legal / Legal advice" component={Checkbox} /> } 
-                  insetChildren
-                />
-              ]}
-            />
-
-
-            <ListItem 
-              primaryText={
-                <Field
-                  id="educacion"
-                  name="educacion"
-                  label="Comunicación Educación / Communication Education"
-                  component={Checkbox}
-                />
-              } 
-              primaryTogglesNestedList
-              nestedItems={[
-                <ListItem 
-                  primaryText={ <Field id="educacion > instituciones de educacion" name="educacion > instituciones de educacion" label="Universidades, Academias, Escuelas. Homeschools / Universities, Academies, Schools. Homeschools" component={Checkbox} /> }
-                  insetChildren
-                />,
-                <ListItem 
-                  primaryText={ <Field id="educacion > medios de comunicación" name="educacion > medios de comunicación" label="Medios de Comunicación / Communication Media" component={Checkbox} /> } 
-                  insetChildren
-                />
-              ]}
-            />
-
-
-            <ListItem 
-              primaryText={
-                <Field
-                  id="ecologia"
-                  name="ecologia"
-                  label="EcoLogia Ambiental, Diseños y Tecnologías / Environmental Ecology, Design and Technology"
-                  component={Checkbox}
-                />
-              } 
-              primaryTogglesNestedList
-              nestedItems={[
-                <ListItem 
-                  primaryText={ <Field id="ecologia > comunidades alterNativas" name="ecologia > comunidades alterNativas" label="Ecoaldeas y Comunidades AlterNativas / Ecovillages and Alternate Communities" component={Checkbox} /> }
-                  insetChildren
-                />,
-                <ListItem 
-                  primaryText={ <Field id="ecologia > hostales y hoteles" name="ecologia > hostales y hoteles" label="Hostales, Hoteles / Hostels, Hotels" component={Checkbox} /> } 
-                  insetChildren
-                />,
-                <ListItem 
-                  primaryText={ <Field id="ecologia > EcoTurismo" name="ecologia > EcoTurismo" label="EcoTurismo / Ecotourism" component={Checkbox} /> } 
-                  insetChildren
-                />,
-                <ListItem 
-                  primaryText={ <Field id="ecologia > permacultura" name="ecologia > permacultura" label="Permacultura – Bioconstrucción / Permaculture - Bioconstruction" component={Checkbox} /> } 
-                  insetChildren
-                />,
-                <ListItem 
-                  primaryText={ <Field id="ecologia > energías renovables" name="ecologia > energías renovables" label="Energías renovables / Renewable energy" component={Checkbox} /> } 
-                  insetChildren
-                />,
-                <ListItem 
-                  primaryText={ <Field id="ecologia > agriCultura" name="ecologia > agriCultura" label="AgriCultura / Farming" component={Checkbox} /> } 
-                  insetChildren
-                />
-              ]}
-            />
-
-
-            <ListItem 
-              primaryText={
-                <Field
-                  id="espiritualidad"
-                  name="espiritualidad"
-                  label="Espiritualidad & Realización del Ser / Spirituality and Realization of Self"
-                  component={Checkbox}
-                />
-              } 
-              primaryTogglesNestedList
-              nestedItems={[
-                <ListItem 
-                  primaryText={ <Field id="espiritualidad > maestros" name="espiritualidad > maestros" label="Maestros, Guías, Canalizadores, Acompañantes, Facilitadores Mayores Abuelos, etc / Teachers, Guides, Channelers, Companions, Senior Facilitators, Grandparents, etc." component={Checkbox} /> }
-                  insetChildren
-                />,
-                <ListItem 
-                  primaryText={ <Field id="espiritualidad > escuelas de sabiduría" name="espiritualidad > escuelas de sabiduría" label="Escuelas de Sabiduría e InIciáticas. Tecnologías Ancestrales y de Desarrollo del Ser. / Schools of Wisdom and Initiative. Ancestral Technologies and Development of the Self." component={Checkbox} /> } 
-                  insetChildren
-                />
-              ]}
-            />
+            />,
 
             <ListItem 
               primaryText={
                 <Field
                   id="redes"
                   name="redes"
-                  label="Redes y Plataformas / Networks and Platforms"
+                  label="Redes, Plataformas & Movimientos (Sociales y/o Virtuales)"
                   component={Checkbox}
                 />
               } 
-            />
+              primaryTogglesNestedList
+              nestedItems={[
+                <ListItem 
+                  primaryText={ <Field id="redes > salud" name="redes > salud" label="Salud & Bienestar" component={Checkbox} /> }
+                  insetChildren
+                />,
+                <ListItem 
+                  primaryText={ <Field id="redes > arte" name="redes > arte " label="Arte & Cultura" component={Checkbox} /> } 
+                  insetChildren
+                />,
+                <ListItem 
+                  primaryText={ <Field id="redes > economias solidarias" name="redes > economias solidarias" label="Economías Solidarias" component={Checkbox} /> } 
+                  insetChildren
+                />,
+                <ListItem 
+                  primaryText={ <Field id="redes > gobernanzas propias" name="redes > gobernanzas propias" label="Gobernanzas Propias e Incidencia Polític@" component={Checkbox} /> } 
+                  insetChildren
+                />,
+                <ListItem 
+                  primaryText={ <Field id="redes > comunicacion" name="redes > comunicacion" label="Comunicación & Educación" component={Checkbox} /> } 
+                  insetChildren
+                />,
+                <ListItem 
+                  primaryText={ <Field id="redes > ecologia" name="redes > ecologia" label="EcoLogía & Tecnología" component={Checkbox} /> } 
+                  insetChildren
+                />,
+                <ListItem 
+                  primaryText={ <Field id="redes > espiritualidad" name="redes > espiritualidad" label="Espiritualidad & Realización del Ser" component={Checkbox} /> } 
+                  insetChildren
+                />,
+                <ListItem 
+                  primaryText={ <Field id="redes > holisticas" name="redes > holisticas" label="Holisticas, Integrales" component={Checkbox} /> } 
+                  insetChildren
+                />
+              ]}
+            />,
 
             <ListItem 
               primaryText={
                 <Field
                   id="personas"
                   name="personas"
-                  label="Personas / Persons"
+                  label="Personas e Individuos Naturales (Perfil Social)"
                   component={Checkbox}
                 />
               } 
               primaryTogglesNestedList
               nestedItems={[
                 <ListItem 
-                  primaryText={ <Field id="personas > naturales (perfil social)" name="personas > naturales (perfil social)" label="Naturales (Perfil Social) / Natural (Social Profile)" component={Checkbox} /> }
+                  primaryText={ <Field id="personas > proconsumidores" name="personas > proconsumidores" label="ProConSumidores Conscientes (Interesados en Participar, Aprender o Comprar de Productos, Servicios o Eventos Conscientes)" component={Checkbox} /> }
                   insetChildren
                 />,
                 <ListItem 
-                  primaryText={ <Field id="personas > voluntarios" name="personas > voluntarios" label="Voluntarios / Volunteers" component={Checkbox} /> } 
+                  primaryText={ <Field id="personas > trabajadores" name="personas > trabajadores " label="Trabajadores / Voluntarios / CoLaboradores / Facilitadores (Interesados en InterCambiar Tiempo, Energía, Saberes etc)" component={Checkbox} /> } 
                   insetChildren
                 />,
                 <ListItem 
-                  primaryText={ <Field id="personas > servicios comerciales" name="personas > servicios comerciales" label="Servicios Comerciales / Commercial Services" component={Checkbox} /> } 
+                  primaryText={ <Field id="personas > proveedores servicios" name="personas > proveedores servicios" label="Proveedores Servicios (Ej: Masaje Thai, Diseño, Comunicación) Cuales?" component={Checkbox} /> } 
                   insetChildren
                 />,
                 <ListItem 
-                  primaryText={ <Field id="personas > productores" name="personas > productores" label="Productores / Producers" component={Checkbox} /> } 
+                  primaryText={ <Field id="personas > productores" name="personas > productores" label="Productores, Alimentos, Medicinas, Artesanías, Artículos, Artefactos" component={Checkbox} /> } 
                   insetChildren
                 />,
                 <ListItem 
-                  primaryText={ <Field id="personas > gestores y proMotores" name="personas > gestores y proMotores" label="Gestores y ProMotores / Managers and ProMotors" component={Checkbox} /> } 
+                  primaryText={ <Field id="personas > gestores" name="personas > gestores" label="Gestores / ProMotores de la Red MAIS cVc (temáticas propuestas para los grupos de trabajo por ahora)" component={Checkbox} /> } 
                   insetChildren
-                />
+                />,
+                <ListItem 
+                  primaryText={ <Field id="personas > salud" name="personas > salud" label="Salud & Bienestar" component={Checkbox} /> } 
+                  insetChildren
+                  nestedItems={[
+                    <ListItem 
+                      primaryText={ <Field id="personas > salud > nutricion" name="personas > salud > nutricion" label="Nutricion & Alimentos" component={Checkbox} /> } 
+                      insetChildren
+                    />,
+                    <ListItem 
+                      primaryText={ <Field id="personas > salud > medicina" name="personas > salud > medicina" label="Medicina & Sanación" component={Checkbox} /> } 
+                      insetChildren
+                    />
+                  ]}
+                />,
+                <ListItem 
+                  primaryText={ <Field id="personas > arte" name="personas > arte" label="Arte & Cultura" component={Checkbox} /> } 
+                  insetChildren
+                  nestedItems={[
+                    <ListItem 
+                      primaryText={ <Field id="personas > arte > usos" name="personas > arte > usos" label="Usos & Costumbres" component={Checkbox} /> } 
+                      insetChildren
+                    />,
+                    <ListItem 
+                      primaryText={ <Field id="personas > arte > artes" name="personas > arte > artes" label="Artes & Artesanias" component={Checkbox} /> } 
+                      insetChildren
+                    />,
+                    <ListItem 
+                      primaryText={ <Field id="personas > arte > movimientos" name="personas > arte > movimientos" label="Movimientos, Encuentros & Eventos Culturales" component={Checkbox} /> } 
+                      insetChildren
+                    />
+                  ]}
+                />,
+                <ListItem 
+                  primaryText={ <Field id="personas > economia" name="personas > economia" label="Economia Solidaria" component={Checkbox} /> } 
+                  insetChildren
+                  nestedItems={[
+                    <ListItem 
+                      primaryText={ <Field id="personas > economia > bancos" name="personas > economia > bancos" label="Bancos de Recursos" component={Checkbox} /> } 
+                      insetChildren
+                    />,
+                    <ListItem 
+                      primaryText={ <Field id="personas > economia > entidades financieras" name="personas > economia > entidades financieras" label="Entidades Financieras & Monedas AlterNativas" component={Checkbox} /> } 
+                      insetChildren
+                    />,
+                    <ListItem 
+                      primaryText={ <Field id="personas > economia > ferias" name="personas > economia > ferias" label="Ferias & Mercados" component={Checkbox} /> } 
+                      insetChildren
+                    />
+                  ]}
+                />,
+                <ListItem 
+                  primaryText={ <Field id="personas > politica" name="personas > politica" label="Política Participativa" component={Checkbox} /> } 
+                  insetChildren
+                  nestedItems={[
+                    <ListItem 
+                      primaryText={ <Field id="personas > economia > gobernanzas" name="personas > economia > gobernanzas" label="Gobernanzas Propias & Metodologías de Participación Social" component={Checkbox} /> } 
+                      insetChildren
+                    />,
+                    <ListItem 
+                      primaryText={ <Field id="personas > economia > redes" name="personas > economia > redes" label="Redes & Movimientos" component={Checkbox} /> } 
+                      insetChildren
+                    />
+                  ]}
+                />,
+                <ListItem 
+                  primaryText={ <Field id="personas > educacion" name="personas > educacion" label="Educación & Comunicación" component={Checkbox} /> } 
+                  insetChildren
+                  nestedItems={[
+                    <ListItem 
+                      primaryText={ <Field id="personas > educacion > pedagogias" name="personas > educacion > pedagogias" label="Pedagogías, Educación & Escuelas AlterNativas" component={Checkbox} /> } 
+                      insetChildren
+                    />,
+                    <ListItem 
+                      primaryText={ <Field id="personas > educacion > agencias" name="personas > educacion > agencias" label="Agencias & Medios de Comunicación" component={Checkbox} /> } 
+                      insetChildren
+                    />
+                  ]}
+                />,
+                <ListItem 
+                  primaryText={ <Field id="personas > ecologia" name="personas > ecologia" label="Ecología & Tecnologías" component={Checkbox} /> } 
+                  insetChildren
+                  nestedItems={[
+                    <ListItem 
+                      primaryText={ <Field id="personas > ecologia > diseños ecologicos" name="personas > ecologia > diseños ecologicos" label="Diseños Ecológicos, Permacultura & Agricultura" component={Checkbox} /> } 
+                      insetChildren
+                    />,
+                    <ListItem 
+                      primaryText={ <Field id="personas > ecologia > ecoturismo" name="personas > ecologia > ecoturismo" label="EcoTurismo" component={Checkbox} /> } 
+                      insetChildren
+                    />,
+                    <ListItem 
+                      primaryText={ <Field id="personas > ecologia > movimientos ambientales" name="personas > ecologia > movimientos ambientales" label="Movimientos Ambientales" component={Checkbox} /> } 
+                      insetChildren
+                    />
+                  ]}
+                />,
+                <ListItem 
+                  primaryText={ <Field id="personas > realizacion del ser" name="personas > realizacion del ser" label="Realización del Ser, Ciencias Espirituales, Ética & Valores" component={Checkbox} /> } 
+                  insetChildren
+                  nestedItems={[
+                    <ListItem 
+                      primaryText={ <Field id="personas > realizacion del ser > ancestralidad" name="personas > realizacion del ser > ancestralidad" label="Ancestralidad & Tradiciones Espirituales" component={Checkbox} /> } 
+                      insetChildren
+                    />,
+                    <ListItem 
+                      primaryText={ <Field id="personas > realizacion del ser > rituales" name="personas > realizacion del ser > rituales" label="Rituales & Tecnologías Ancestrales & Espirituales" component={Checkbox} /> } 
+                      insetChildren
+                    />
+                  ]}
+                />,
+                <ListItem 
+                  primaryText={ <Field id="personas > gestores" name="personas > gestores" label="Gestores Holisticos / Tejedores de la Red en General" component={Checkbox} /> } 
+                  insetChildren
+                  nestedItems={[
+                    <ListItem 
+                      primaryText={ <Field id="personas > gestores > embajadores" name="personas > gestores > embajadores" label="Embajadores (de cual Red u Organización?)" component={Checkbox} /> } 
+                      insetChildren
+                    />,
+                    <ListItem 
+                      primaryText={ <Field id="personas > gestores > promotores" name="personas > gestores > promotores" label="ProMotores (Articuladores, Enlazadores Conectores)" component={Checkbox} /> } 
+                      insetChildren
+                    />,
+                    <ListItem 
+                      primaryText={ <Field id="personas > gestores > comunicadores" name="personas > gestores > comunicadores" label="Comunicadores" component={Checkbox} /> } 
+                      insetChildren
+                    />,
+                    <ListItem 
+                      primaryText={ <Field id="personas > gestores > gestores culturales" name="personas > gestores > gestores culturales" label="Gestores Culturales" component={Checkbox} /> } 
+                      insetChildren
+                    />,
+                    <ListItem 
+                      primaryText={ <Field id="personas > gestores > gestores de recursos" name="personas > gestores > gestores de recursos" label="Gestores de Recursos" component={Checkbox} /> } 
+                      insetChildren
+                    />,
+                    <ListItem 
+                      primaryText={ <Field id="personas > gestores > facilitadores" name="personas > gestores > facilitadores" label="Facilitadores" component={Checkbox} /> } 
+                      insetChildren
+                    />,
+                    <ListItem 
+                      primaryText={ <Field id="personas > gestores > administradores" name="personas > gestores > administradores" label="Administradores" component={Checkbox} /> } 
+                      insetChildren
+                    />,
+                    <ListItem 
+                      primaryText={ <Field id="personas > gestores > organizadores" name="personas > gestores > organizadores" label="Organizadores" component={Checkbox} /> } 
+                      insetChildren
+                    />,
+                  ]}
+                />,
               ]}
-            />
+            />,
 
             <ListItem 
               primaryText={
                 <Field
                   id="eventos"
                   name="eventos"
-                  label="Eventos / Events"
+                  label="Eventos & Encuentros (ECOnscientes)"
                   component={Checkbox}
                 />
               } 
               primaryTogglesNestedList
               nestedItems={[
                 <ListItem 
-                  primaryText={ <Field id="eventos > turísticos" name="eventos > turísticos" label="Turísticos / Tourist" component={Checkbox} /> }
+                  primaryText={ <Field id="eventos > culturales" name="eventos > culturales" label="Culturales" component={Checkbox} /> }
+                  insetChildren
+                  nestedItems={[
+                    <ListItem 
+                      primaryText={ <Field id="eventos > culturales > conciertos" name="eventos > culturales > conciertos" label="Conciertos" component={Checkbox} /> } 
+                      insetChildren
+                    />,
+                    <ListItem 
+                      primaryText={ <Field id="eventos > culturales > teatro" name="eventos > culturales > teatro" label="Teatro" component={Checkbox} /> } 
+                      insetChildren
+                    />,
+                    <ListItem 
+                      primaryText={ <Field id="eventos > culturales > cine" name="eventos > culturales > cine" label="Cine" component={Checkbox} /> } 
+                      insetChildren
+                    />,
+                    <ListItem 
+                      primaryText={ <Field id="eventos > culturales > tertulias" name="eventos > culturales > tertulias" label="Tertulias" component={Checkbox} /> } 
+                      insetChildren
+                    />
+                  ]}
+                />,
+                <ListItem 
+                  primaryText={ <Field id="eventos > turisticos" name="eventos > turisticos " label="ECO / Turísticos, (Ej: Caminatas, Escaladas, Recorridos)" component={Checkbox} /> } 
                   insetChildren
                 />,
                 <ListItem 
-                  primaryText={ <Field id="eventos > pedagógicos " name="eventos > pedagógicos " label="Pedagógicos / Pedagogical" component={Checkbox} /> } 
+                  primaryText={ <Field id="eventos > pedagogicos" name="eventos > pedagogicos" label="Pedagógicos, (Clases, Cursos, Talleres, Seminarios,etc)" component={Checkbox} /> } 
                   insetChildren
                 />,
                 <ListItem 
-                  primaryText={ <Field id="eventos > culturales" name="eventos > culturales" label="Culturales / Cultural" component={Checkbox} /> } 
+                  primaryText={ <Field id="eventos > holísticos" name="eventos > holísticos" label="Holísticos (Crecimiento, Desarrollo, Realización del Ser)" component={Checkbox} /> } 
                   insetChildren
                 />,
                 <ListItem 
-                  primaryText={ <Field id="eventos > holisticos" name="eventos > holisticos" label="Holisticos / Holistic" component={Checkbox} /> } 
+                  primaryText={ <Field id="eventos > rituales" name="eventos > rituales" label="Rituales.& Ceremonias" component={Checkbox} /> } 
                   insetChildren
                 />,
                 <ListItem 
-                  primaryText={ <Field id="eventos > rituales" name="eventos > rituales" label="Rituales / Rituals" component={Checkbox} /> } 
+                  primaryText={ <Field id="eventos > sociales espirituales" name="eventos > sociales espirituales" label="Sociales Espirituales (Ej: Meditaciones, Aniversarios  o Días Mundiales, Solsticios, etc)" component={Checkbox} /> } 
+                  insetChildren
+                />,
+                <ListItem 
+                  primaryText={ <Field id="eventos > ecologicos" name="eventos > ecologicos" label="EcoLógicos & Ambientales (Ej: Siembras, Limpiezas Mingas, etc)" component={Checkbox} /> } 
+                  insetChildren
+                />,
+                <ListItem 
+                  primaryText={ <Field id="eventos > politicos" name="eventos > politicos" label="Políticos, Participación Social (Ej: Marchas, Asambleas, Velatones, etc)" component={Checkbox} /> } 
+                  insetChildren
+                />,
+                <ListItem 
+                  primaryText={ <Field id="eventos > comerciales" name="eventos > comerciales" label="Comerciales: (Ferias, Mercados, Bazares etc)" component={Checkbox} /> } 
+                  insetChildren
+                />,
+                <ListItem 
+                  primaryText={ <Field id="eventos > festivales" name="eventos > festivales" label="Festivales (Incluyen varias de las anteriores)" component={Checkbox} /> } 
                   insetChildren
                 />
               ]}
